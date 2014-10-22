@@ -1,4 +1,4 @@
 whatisforlunch
 ==============
 
-Stripper names
+ * Stripper names
