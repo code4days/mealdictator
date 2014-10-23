@@ -3,7 +3,4 @@ whatisforlunch
 
  * Stripper names
  * poop panda poop
- * Ummmm really... 
- 1Test
- Test
- 
+ Idea for location website Location Find and Slider http://jquery.web44.net/
