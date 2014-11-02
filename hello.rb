@@ -1,5 +1,5 @@
 require 'sinatra'
 
-get '/hello' do
-  "Hello Sinatra!"
+get '/' do
+  "What's For Lunch on Sinatra!"
 end
