@@ -1,3 +1,3 @@
 source "https://rubygems.org"
 gem 'sinatra'
-gem 'geocoder'
+gem 'google_places'
