@@ -11,6 +11,14 @@ function getLocation() {
 function showPosition(position) {
     x.innerHTML="Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude;	
-    document.getElementById("test").innerHTML = position.coords.latitude;
-    document.getElementById("test2").innerHTML = position.coords.longitude;
+    document.getElementById("lat").innerHTML = position.coords.latitude;
+    document.getElementById("lon").innerHTML = position.coords.longitude;
+
+
+$.post(
+    "http://localhost:4567/location",
+    {'lat': lat, 'lon': lon},
+    onsuccess   //optional
+);
+
 }

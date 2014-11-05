@@ -7,6 +7,17 @@ get '/' do
   "What's For Lunch on Sinatra!"
 end
 
+get '/stuff' do
+  "What's sdfsdf Lunch on Sinatra!"
+end
+
+post '/location' do
+  lat = params[:lat]
+  lon = params[:lon]
+  
+  "#{lat} #{lon}"
+end
+
 get '/geo' do
 
   @client = GooglePlaces::Client.new("AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4")
