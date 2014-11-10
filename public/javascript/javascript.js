@@ -1,24 +1,24 @@
-var x = document.getElementById("demo");
 
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
+    } else {
+        document.write("Geolocation is not supported by this browser.");
     }
 }
 
 function showPosition(position) {
-    x.innerHTML="Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude;	
-    document.getElementById("lat").innerHTML = position.coords.latitude;
-    document.getElementById("lon").innerHTML = position.coords.longitude;
+    // document.write("Latitude: " + position.coords.latitude +
+    // "<br>Longitude: " + position.coords.longitude);
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
 
 
-$.post(
-    "http://localhost:4567/location",
-    {'lat': lat, 'lon': lon},
-    onsuccess   //optional
-);
+window.location.assign("http://localhost:4567/location?lat=" + lat + "&lon=" + lon);
+// $.get(
+//     "http://localhost:4567/location?lat=" + lat + "&lon" + lon;
+//     // {'lat': lat, 'lon': lon},
+//     // onsuccess   //optional
+// );
 
 }
