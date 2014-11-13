@@ -7,15 +7,12 @@ get '/' do
   "What's For Lunch on Sinatra!"
 end
 
-get '/stuff' do
-  "What's sdfsdf Lunch on Sinatra!"
-end
-
-get '/location' do
+get '/geo' do
   lat = params[:lat]
   lon = params[:lon]
-
-  "latitude - #{lat} longitude - #{lon}"
+  
+  erb :geo
+  # "latitude - #{lat} longitude - #{lon}"
 end
 
 get '/geo' do

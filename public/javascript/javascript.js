@@ -14,11 +14,12 @@ function showPosition(position) {
     var lon = position.coords.longitude;
 
 
-window.location.assign("http://localhost:4567/location?lat=" + lat + "&lon=" + lon);
-// $.get(
-//     "http://localhost:4567/location?lat=" + lat + "&lon" + lon;
-//     // {'lat': lat, 'lon': lon},
-//     // onsuccess   //optional
-// );
+window.location.assign("http://localhost:4567/geo?lat=" + lat + "&lon=" + lon);
+
+$.get(
+    "http://localhost:4567/geo", 
+    {'lat': lat, 'lon': lon},
+    onsuccess   //optional
+);
 
 }
