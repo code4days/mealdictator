@@ -1,8 +1,6 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    google_places (0.27.0)
-      httparty (~> 0.13.1)
     httparty (0.13.1)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -21,5 +19,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  google_places
+  httparty
   sinatra
