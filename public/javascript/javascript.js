@@ -15,7 +15,7 @@ function showPosition(position) {
 
 
 //window.location.assign("http://localhost:4567/geo?lat=" + lat + "&lon=" + lon);
-    window.location.assign(document.domain +"/geo?lat=" + lat + "&lon=" + lon);
+    window.location.assign("/geo?lat=" + lat + "&lon=" + lon);
 
 //$.get(
 //    "http://localhost:4567/geo",
