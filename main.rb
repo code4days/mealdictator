@@ -8,19 +8,27 @@ get '/' do
 end
 
 get '/geo' do
+  lat = params[:lat]
+  lon = params[:lon]
+  
+  erb :geo
+  # "latitude - #{lat} longitude - #{lon}"
+end
 
-  @client = GooglePlaces::Client.new("AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4")
+get '/geo' do
+
+  # @client = GooglePlaces::Client.new("AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4")
 
   #lat = 39.3797966
   #lat = 39.379686
   #lon = -84.3886005
   #lon = -84.3879848
 
-  lat = 151.1957362
-  lon = -33.8670522
+  # lat = 39.0307818
+  # lon = -84.46651109999999
 
 
-  @spots_list = @client.spots(lon, lat, :types => 'restaurant')
+  # @spots_list = @client.spots(lon, lat, :types => 'restaurant')
 
   erb :geo
 

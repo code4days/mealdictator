@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+
+	<link href="/css/bootstrap.css" rel="stylesheet">
+	<link href="/javascript/javascript.js" rel="js">
+	<link href="/css/bootstrap-responsive.css" rel="stylesheet">
+	<link rel="stylesheet" href="customStyle.css">
+  <script type="text/javascript" src="javascript/javascript.js"></script>
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+
+<body>
+    <a href="#content" class="sr-only">Skip to main content</a>
+
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+
+        <a href="./" class="navbar-brand"><img src="images/whatsForLunchLogo.png" alt="Whats For Lunch" height="50px" ></a>
+
+        <button class="navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <div class="collapse navbar-collapse navHeaderCollapse">
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="avtive"><a href="./">Test 1</a></li>
+            <li><a href="#">Test 2</a></li>
+            <li><a href="#">Test 3</a></li>
+            <li class="dropdown">
+
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Social Media <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Test 5</a></li>
+                  <li><a href="#">Test 6</a></li>
+                  <li><a href="#">Test 7</a></li>
+                  <li><a href="#">Test 8</a></li>
+                </ul>
+            </li>
+          </ul>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="container" id="content">
+		<%= yield %>
+	</div>
+
+</body>
+</html>
