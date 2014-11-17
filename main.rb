@@ -46,7 +46,7 @@ get '/geo2' do
   line = ""
 
 
-  url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=39.379686,-84.3879848&radius=1000&types=food&key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4'
+  url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=39.379686,-84.3879848&radius=1000&types=restaurant&key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4'
 
 
   json_response = HTTParty.get(url).body
