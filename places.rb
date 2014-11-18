@@ -24,7 +24,9 @@ class Places
     restaurants = Hash.new()
 
     #do a places search to get the name of restaurants and their place_id within a given radius
-    search_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ @lat + "," + @lon + "&radius=1000&types=food&key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4"
+    #search_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ @lat + "," + @lon + "&radius=1000&types=food&key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4"
+    search_url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants&location="+ @lat + "," + @lon + "&radius=1000&types=restaurant&key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4"
+
 
     parsed_result = call_google_places_api(search_url)
 
