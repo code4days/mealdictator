@@ -14,8 +14,9 @@ function showPosition(position) {
     var lon = position.coords.longitude;
 
 
-//window.location.assign("http://localhost:4567/geo?lat=" + lat + "&lon=" + lon);
-    window.location.assign("/geo?lat=" + lat + "&lon=" + lon);
+    //window.location.assign("http://localhost:4567/geo?lat=" + lat + "&lon=" + lon);
+    //window.location.assign("/geo?lat=" + lat + "&lon=" + lon);
+    window.location.assign("/places?lat=" + lat + "&lon=" + lon);
 
 //$.get(
 //    "http://localhost:4567/geo",
