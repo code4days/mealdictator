@@ -17,11 +17,16 @@ function showPosition(position) {
     //window.location.assign("http://localhost:4567/geo?lat=" + lat + "&lon=" + lon);
     //window.location.assign("/geo?lat=" + lat + "&lon=" + lon);
     window.location.assign("/places?lat=" + lat + "&lon=" + lon);
-
-//$.get(
-//    "http://localhost:4567/geo",
-//    {'lat': lat, 'lon': lon},
-//    onsuccess   //optional
-//);
-
 }
+
+function parse(form) {
+    var query = form.query.value;
+    var mile = form.mile.value;
+
+    window.location.assign("/maps?query=" + query + "&mile=" + mile);
+//.$post(
+//    "http://localhost:4567/maps",
+//    {'query': query, 'mile': mile},
+//);
+}
+

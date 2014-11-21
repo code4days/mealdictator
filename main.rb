@@ -4,8 +4,16 @@ require 'json'
 require 'httparty'
 require './places'
 
+
 get '/' do
   erb :home
+end
+
+post '/maps' do
+  @query = params[:locationinput]
+  @mile = params[:mile]
+  "latitude - #{query} longitude - #{mile}"
+  erb :value
 end
 
 get '/geo' do
