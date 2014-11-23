@@ -37,10 +37,19 @@
         </div>
     <br><br>
     <div class="container container_location social" id="content">
-     <a href="./"> <img src="images/facebook.jpg" height="50px"> </a>
+<a title="send to Facebook" 
+  href="http://www.facebook.com/sharer.php?s=100&p[title]=YOUR_TITLE&p[summary]=YOUR_SUMMARY"
+  target="_blank">
+  <span>
+<img src="images/facebook.jpg" height="50px">
+  </span>
+</a>
+
      <a href="https://twitter.com/share?text=I'm%20going%20to%20<%= @name %>"> <img src="images/twitter.png" height="40px"> </a>
      <a href="./"> <img src="images/github.gif" height="40px"> </a>
-     <a href="./"> <img src="images/gplus.png" height="40px"> </a>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<div class="g-plus" data-action="share" data-href="jjjj" >Test</div>
+
     <script type="text/javascript">
 	window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
     </script>
