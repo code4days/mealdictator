@@ -25,8 +25,4 @@ function parse(form) {
 
     window.location.assign("/maps?query=" + query + "&mile=" + mile);
 }
-.$post(
-    "http://localhost:4567/maps",
-    {'query': query, 'mile': mile},
-);
 

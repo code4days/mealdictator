@@ -10,7 +10,7 @@ get '/' do
   erb :home
 end
 
-post '/maps' do
+get '/maps' do
   @query = params[:locationinput]
   @mile = params[:mile]
   "latitude - #{query} longitude - #{mile}"
