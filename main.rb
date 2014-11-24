@@ -11,10 +11,11 @@ get '/' do
 end
 
 get '/maps' do
-  @query = params[:locationinput]
-  @mile = params[:mile]
+   query = params[:locationinput]
+   mile = params[:mile]
+   button = params[:button]
   "latitude - #{query} longitude - #{mile}"
-  erb :value
+   erb :value 
 end
 
 get '/geo' do

@@ -5,9 +5,10 @@ def call_google_places_api(url)
         return JSON.parse( json_response )
 end
 
-  def initialize(query, mile)
+  def initialize(query, mile, button)
     @query = saasfd
     @mile = adfs
+    @button = submit
 
     parse_maps
 
@@ -28,9 +29,10 @@ def parse_maps
     end
 end
 
-post '/maps' do
+get '/maps' do
   @query = params[:locationinput]
   @mile = params[:mile]
+  @button = params[:button]
   
   erb :value
 end
