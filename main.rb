@@ -5,7 +5,6 @@ require 'httparty'
 require './places'
 require 'aws-sdk-core'
 
-
 get '/' do
 
   erb :home

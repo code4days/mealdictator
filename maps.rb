@@ -1,15 +1,11 @@
-require 'uri'
-require 'pp'
-require 'httparty'
-require 'json'
-
+class maps
 
 def call_google_places_api(url)
         json_response = HTTParty.get(url).body
         return JSON.parse( json_response )
 end
 
-  def initialize(lat, lon)
+  def initialize(query, mile)
     @query = saasfd
     @mile = adfs
 
@@ -39,3 +35,4 @@ post '/maps' do
   erb :value
 end
 
+end

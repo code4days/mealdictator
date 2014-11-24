@@ -1,5 +1,5 @@
 <head>
-#<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
@@ -7,11 +7,11 @@
 <body onload="getLocation()">
 	<div align="center">
 		<img width="150" height="150" onclick="getLocation()" src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/define_location.png" alt="Get Geolocation"/>
-		    <form name="myform" method="GET" action="">
+		    <form name="myform" method="GET" action="./maps">
 		  	  <input type="text" name="locationinput" placeholder="Search City, State, or Zip"><br>
 		      <label for="mile">How Many Miles Could You Travel?:</label>
 		      <input type="range" name="mile" id="mile" value="5" min="1" max="100">
-		      <input type="button" name="button" value="Submit" onClick="parse(this.form)">
+		      <input type="submit" name="button" value="Submit" onClick="parse(this.form)">
 		    </form>
 	</div>
 </body>
