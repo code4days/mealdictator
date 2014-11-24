@@ -3,9 +3,11 @@ require 'sinatra/reloader' if development?
 require 'json'
 require 'httparty'
 require './places'
+require 'aws-sdk-core'
 
 
 get '/' do
+
   erb :home
 end
 
