@@ -1,6 +1,6 @@
 class Places
 
-  attr_reader :address, :phone_number, :name, :rating
+  attr_reader :address, :phone_number, :name, :rating, :placeid
 
   def initialize(lat, lon)
     @lat = lat
@@ -26,6 +26,8 @@ class Places
 
 
     parsed_result = call_google_places_api(search_url)
+    
+    pp parsed_result
 
     parsed_result['results'].each do |result|
 
@@ -42,6 +44,10 @@ class Places
 
     if details_result['result']['formatted_address'] != nil
       @address = details_result['result']['formatted_address']
+    end
+
+    if details_result['result']['place_id'] != nil
+      @placeid = details_result['result']['place_id']
     end
 
     if details_result['result']['formatted_phone_number'] != nil
@@ -80,9 +86,9 @@ class Maps
       puts @query
 
       url = "https://maps.googleapis.com/maps/api/geocode/json?address="+@query+""
-      puts url
+
       parsed_result = call_google_places_api(url)
-      puts parsed_result
+      pp parsed_result
 
       #pp parsed_result
       parsed_result['results'].each do |result|
@@ -112,6 +118,8 @@ get '/maps' do
   @phone_number = place.phone_number
   @name = place.name
   @rating = place.rating
+  @placeid = place.placeid
+  @addressformat = @address.gsub(' ','+')
 
   erb :restaurant
 end
@@ -126,7 +134,8 @@ get '/places' do
   @phone_number = place.phone_number
   @name = place.name
   @rating = place.rating
-
+  @placeid = place.placeid
+  @addressformat = @address.gsub(' ','+')
 
   erb :restaurant
 end
