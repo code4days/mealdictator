@@ -26,10 +26,6 @@ function parse(form) {
     var mile = form.mile.value;
 
     window.location.assign("/maps?query=" + query + "&mile=" + mile);
-//.$post(
-//    "http://localhost:4567/maps",
-//    {'query': query, 'mile': mile},
-//);
 }
 
 function onClickSkip(){

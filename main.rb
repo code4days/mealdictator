@@ -2,22 +2,23 @@ require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'json'
 require 'httparty'
-require './places'
-require './dataaccess'
+#require './places'
 require 'aws-sdk-core'
-
+require './maps'
+require 'pp'
 
 get '/' do
 
   erb :home
 end
 
-post '/maps' do
-  @query = params[:locationinput]
-  @mile = params[:mile]
-  "latitude - #{query} longitude - #{mile}"
-  erb :value
-end
+#get '/maps' do
+#   query = params[:locationinput]
+#   mile = params[:mile]
+#   button = params[:button]
+#  "latitude - #{query} longitude - #{mile}"
+#   erb :value 
+#end
 
 get '/geo' do
 
