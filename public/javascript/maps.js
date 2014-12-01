@@ -16,6 +16,8 @@ function showPosition(position) {
 
     //window.location.assign("http://localhost:4567/geo?lat=" + lat + "&lon=" + lon);
     //window.location.assign("/geo?lat=" + lat + "&lon=" + lon);
+
+    //TODO:This has to be moved to prevent auto redirect
     window.location.assign("/places?lat=" + lat + "&lon=" + lon);
 }
 
@@ -28,5 +30,10 @@ function parse(form) {
 //    "http://localhost:4567/maps",
 //    {'query': query, 'mile': mile},
 //);
+}
+
+function onClickSkip(){
+    console.log("Pressed Skip");
+    window.location.assign("/dataaccess?restaurant=testRestaurant");
 }
 
