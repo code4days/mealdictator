@@ -26,7 +26,7 @@ class Places
 
 
     parsed_result = call_google_places_api(search_url)
-    
+
     pp parsed_result
 
     parsed_result['results'].each do |result|
@@ -101,19 +101,45 @@ class Maps
    end
 end
 
+class Weather
+
+  def initialize(lat, lon)
+      @lat = lat
+      @lon = lon
+
+      display_weather
+  end
+
+  def call_google_places_api(url)
+          json_response = HTTParty.get(url).body
+          return JSON.parse( json_response )
+  end
+
+  def display_weather
+
+  url = "api.openweathermap.org/data/2.5/weather?lat="+@lat+"&lon="+@lon
+
+  parsed_weather_result = call_google_places_api(url)
+  pp parsed_weather_result
+  end
+
+end
+
 
 get '/maps' do
   @query = params[:locationinput]
   @mile = params[:mile]
   #@button = params[:button]
-  
+
   settings = Maps.new(@query, @mile)
 
   @lat = settings.lat.to_s
   @lon = settings.lon.to_s
 
   place = Places.new(@lat, @lon)
+  weather = Weather.new(@lat, @lon)
 
+  @weather =
   @address = place.address
   @phone_number = place.phone_number
   @name = place.name
