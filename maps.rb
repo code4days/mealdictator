@@ -137,9 +137,9 @@ get '/maps' do
   @lon = settings.lon.to_s
 
   place = Places.new(@lat, @lon)
-  weather = Weather.new(@lat, @lon)
+#  weather = Weather.new(@lat, @lon)
 
-  @weather =
+#  @weather =
   @address = place.address
   @phone_number = place.phone_number
   @name = place.name
