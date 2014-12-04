@@ -8,7 +8,7 @@ class Dataaccess
     restaurantName = restaurantName
   end
 
-  #dynamo_db = Aws::DynamoDB.new();
+  # dynamo_db = Aws::DynamoDB.new();
   #dynamo_db
   # dynamo_db = Aws::DynamoDB.new(
   #     :access_key_id => '',

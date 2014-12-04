@@ -7,6 +7,7 @@ require 'aws-sdk-core'
 require './maps'
 require 'pp'
 
+
 get '/' do
 
   erb :home
