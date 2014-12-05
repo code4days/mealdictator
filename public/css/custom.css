@@ -22,4 +22,9 @@
     height: 100%;
 }
 .logo-head {margin: 10px 0 0 0}
-.logo-head h1 {float: left;}
+.logo-head h1 {
+    font-size: 3em;
+    float: left;
+    font-family: 'Monofett', cursive;
+    /*font-family: 'Bangers', cursive;*/
+}
