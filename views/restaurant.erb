@@ -11,12 +11,14 @@
   Phone number: <%= @phone_number %> <br>
   Address: <%= @address %> <br>
   Place ID: <%= @placeid %><br>
+</p>
 
 <div class="Flexible-container">
   <iframe class="map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4&q=+<%= @addressformat %>"></iframe>
 </div>
-</p>
-<p>
+
+<!-- <p>
   <button type="button" id="skipRestaurant" onclick="onClickSkip()">
     Skip This Restaurant</button>
 </p>
+ -->
