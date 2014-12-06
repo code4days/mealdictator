@@ -10,6 +10,11 @@
   Rating: <%= @rating %> / 5 <br>
   Phone number: <%= @phone_number %> <br>
   Address: <%= @address %> <br>
+  <% if @open_now.eql?("Open now") %>
+     <font color="green">Open</font><br>
+  <% elsif @open_now.eql?("Closed")  %>
+     <font color="red">Closed</font><br>
+  <% end %>
   Place ID: <%= @placeid %><br>
 </p>
 
