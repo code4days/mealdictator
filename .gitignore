@@ -1,3 +1,4 @@
 .elasticbeanstalk/
 .idea/
 .DS_Store
+dbtest.rb
