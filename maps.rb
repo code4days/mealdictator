@@ -1,6 +1,6 @@
 class Places
 
-  attr_reader :address, :phone_number, :name, :rating, :placeid
+  attr_reader :address, :phone_number, :name, :rating, :placeid, :open_now
 
   def initialize(lat, lon)
     @lat = lat
@@ -60,6 +60,16 @@ class Places
 
     if  details_result['result']['rating'] != nil
       @rating = details_result['result']['rating']
+    end
+
+    if  details_result['result']['opening_hours']['open_now'] != nil
+      if details_result['result']['opening_hours']['open_now'] == true
+        @open_now = "Open now"
+      else
+        @open_now = "Closed"
+      end
+    else
+        @open_now = "No data"
     end
   end
 end
@@ -146,7 +156,7 @@ get '/maps' do
   @rating = place.rating
   @placeid = place.placeid
   @addressformat = @address.gsub(' ','+')
-
+  @open_now = place.open_now
   erb :restaurant
 end
 
@@ -162,6 +172,6 @@ get '/places' do
   @rating = place.rating
   @placeid = place.placeid
   @addressformat = @address.gsub(' ','+')
-
+  @open_now = place.open_now
   erb :restaurant
 end

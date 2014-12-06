@@ -1,6 +1,6 @@
 class Places
 
-  attr_reader :address, :phone_number, :name, :rating
+  attr_reader :address, :phone_number, :name, :rating, :open_now
 
   def initialize(lat, lon)
     @lat = lat
@@ -59,8 +59,18 @@ class Places
       @rating = details_result['result']['rating']
     end
 
-  end
+    if  details_result['result']['opening_hours']['open_now'] != nil
+      if details_result['result']['opening_hours']['open_now']?
+	@open_now = "Open now"
+      else 
+        @open_now = "Closed"
+      end
+    else
+        @open_now = "No data"
+    end
 
+
+  end
 
 end
 
@@ -70,20 +80,19 @@ get '/places' do
   @lon = params[:lon]
 
   place = Places.new(@lat, @lon)
-
+ binding.remote_pry
   @address = place.address
   @phone_number = place.phone_number
   @name = place.name
   @rating = place.rating
 
-
   erb :restaurant
 
-  # open_now = ""
-  #
-  # if result.include? "opening_hours"
-  #   result['opening_hours']['open_now'] == true ? open_now = "Open" : open_now = "Closed"
-  # end
-  #
-  # @restaurant[result['name']] = open_now;
+   open_now = ""
+  
+   if result.include? "opening_hours"
+     result['opening_hours']['open_now'] == true ? open_now = "Open" : open_now = "Closed"
+   end
+  
+   @restaurant[result['name']] = open_now;
 end
