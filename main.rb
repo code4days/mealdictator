@@ -5,7 +5,7 @@ require 'httparty'
 #require './places'
 require './maps'
 require 'pp'
-require './dbtest'
+
 
 
 get '/' do
