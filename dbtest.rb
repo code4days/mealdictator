@@ -22,4 +22,5 @@ item.attributes.set(
     :numbers => [12, 24]
 )
 
+"DB SHIT DONE!!!"
 end
