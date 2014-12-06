@@ -8,13 +8,16 @@ dynamo_db = AWS::DynamoDB.new(
     :region => 'us-east-1'
 )
 
-table = dynamo_db.tables.create(
-    "Mytable", 10, 5,
-    :hash_key => { :id => :string }
-)
+# table = dynamo_db.tables.create(
+#     "Mytable", 10, 5,
+#     :hash_key => { :id => :string }
+# )
 
-sleep 1 while table.status == :creating
+# sleep 1 while table.status == :creating
 
+
+
+table = dynamo_db.tables['Mytable']
 item = table.items.put(:id => "abc123")
 item.hash_value # => "abc123"
 item.attributes.set(
