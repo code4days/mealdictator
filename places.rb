@@ -80,7 +80,6 @@ get '/places' do
   @lon = params[:lon]
 
   place = Places.new(@lat, @lon)
- binding.remote_pry
   @address = place.address
   @phone_number = place.phone_number
   @name = place.name
