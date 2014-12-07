@@ -1,10 +1,15 @@
 
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        console.log("IN GEO IF")
+        //navigator.geolocation.getCurrentPosition(showPosition, error);
+        navigator.geolocation.watchPosition(showPosition, error);
     } else {
-        document.write("Geolocation is not supported by this browser.");
-        console.log("user rejected location request")
+       // document.write("Geolocation is not supported by this browser.");
+        //console.log("user rejected location request")
+        console.log("IN GEO ELSE")
+
+
     }
 }
 
@@ -20,6 +25,14 @@ function showPosition(position) {
 
     //TODO:This has to be moved to prevent auto redirect
     window.location.assign("/places?lat=" + lat + "&lon=" + lon);
+}
+
+function error() {
+    console.log("in ERROR function");
+    //var output = document.getElementById("restaurant");
+
+    //output.innerHTML = "<b>Please type in location to find restaurant</b>";
+    window.location.assign("/places/true");
 }
 
 function parse(form) {

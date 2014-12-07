@@ -1,17 +1,19 @@
 <div class="row namebg">
 
   <div class="col-xs-6 col-sm-4 pad" >
-
-
-
-    <%  if !@error  %>
     <p>
       Your location is: <br>
+<<<<<<< HEAD
       Lat: <%= @place.lat %> <br>
       Lon: <%= @place.lon %>
 
+=======
+      Lat: <%= @lat %> <br>
+      Lon: <%= @lon %>
+>>>>>>> ddb6b7f16d21fa96cd69879127d29139cc4797be
     </p>
     <p>
+<<<<<<< HEAD
       You're going to eat at:<b> <%=  @place.name %></b> <br>
       Rating: <%=  @place.rating %> / 5 <br>
       Phone number: <%=  @place.phone_number %> <br>
@@ -23,17 +25,26 @@
         <font color="red">Closed</font><br>
       <% end %>
       Place ID: <%=  @place.placeid %><br>
+=======
+     You're going to eat at:<b> <%= @name %></b> <br>
+     Rating: <%= @rating %> / 5 <br>
+     Phone number: <%= @phone_number %> <br>
+     Address: <%= @address %> <br>
+     <% if @open_now.eql?("Open now") %>
+       <%= @periods %><br>
+        <font size="3" color="green">Open now</font><br>
+       <% elsif @open_now.eql?("Closed")  %>
+         <font color="red">Closed</font><br>
+     <% end %>
+     Weather: <%= @weatherStatus %><br>
+>>>>>>> ddb6b7f16d21fa96cd69879127d29139cc4797be
     </p>
 
     <div class="Flexible-container">
       <iframe class="map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4&q=+<%=  @place.address.gsub(' ','+') %>"></iframe>
     </div>
-    <% else %>
-        <p>
-         You denied us access to your location! Select one from right ->
 
-        </p>
-    <% end %>
+
 
   </div>
   <div class="col-xs-6 col-sm-4">

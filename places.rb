@@ -80,14 +80,19 @@ class Places
   end
 end
 
+get '/places/:error' do
 
+  @error = params[:error]
+
+  erb :restaurant
+
+end
 
 get '/places' do
   lat = params[:lat]
   lon = params[:lon]
 
-
-  @place = Places.new(lat, lon)
+  @place = Places.new(lat, lon, )
 
   # @address = place.address
   # @phone_number = place.phone_number
@@ -98,6 +103,8 @@ get '/places' do
   # @open_now = place.open_now
   erb :restaurant
 end
+
+
 
 post '/places' do
   query = params[:locationinput]
