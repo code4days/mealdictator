@@ -1,6 +1,6 @@
 class Places
 
-  attr_reader :address, :phone_number, :name, :rating, :placeid, :open_now
+  attr_reader :address, :phone_number, :name, :rating, :placeid, :open_now, :periods
 
   def initialize(lat, lon)
     @lat = lat
@@ -71,6 +71,12 @@ class Places
     else
         @open_now = "No data"
     end
+
+    if details_result['result']['opening_hours']['periods'][Time.now.wday] != nil
+	@periods = details_result['result']['opening_hours']['periods'][Time.now.wday]
+	@periods = Time.parse(@periods['open']['time'].insert(2,":")).strftime("%I:%M%p")+ " - " + Time.parse(@periods['close']['time'].insert(2,":")).strftime("%I:%M%p")
+    end
+
   end
 end
 
@@ -167,6 +173,7 @@ get '/maps' do
   @placeid = place.placeid
   @addressformat = @address.gsub(' ','+')
   @open_now = place.open_now
+  @periods = place.periods
 
   weather = Weathers.new(@lat, @lon)
 
