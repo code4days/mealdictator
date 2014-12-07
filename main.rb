@@ -1,11 +1,12 @@
 require 'sinatra'
 #require 'sinatra/reloader' if development?
-require 'json'
+#require 'json'
 require 'httparty'
 require './places'
 require './maps'
 require './weathers'
 require 'pp'
+require 'db'
 
 
 
