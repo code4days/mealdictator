@@ -33,39 +33,39 @@ class Maps
    end
 end
 
-class Weathers
+# class Weathers
 
-  attr_reader :lat, :lon, :weatherStatus
+#   attr_reader :lat, :lon, :weatherStatus
 
-  def initialize(lat, lon)
-      @lat = lat
-      @lon = lon
+#   def initialize(lat, lon)
+#       @lat = lat
+#       @lon = lon
 
-      display_weather
-  end
+#       display_weather
+#   end
 
-  def call_open_weather_api(url)
-          json_response = HTTParty.get(url).body
-          return JSON.parse( json_response )
-  end
+#   def call_open_weather_api(url)
+#           json_response = HTTParty.get(url).body
+#           return JSON.parse( json_response )
+#   end
 
-  def display_weather
+#   def display_weather
 
-    # url = "http://api.openweathermap.org/data/2.5/weather?lat="+@lat+"&lon="+@lon
-    url = "http://api.openweathermap.org/data/2.5/weather?lat="+@lat+"&lon="+@lon+"&type=like&units=imperial"
+#     # url = "http://api.openweathermap.org/data/2.5/weather?lat="+@lat+"&lon="+@lon
+#     url = "http://api.openweathermap.org/data/2.5/weather?lat="+@lat+"&lon="+@lon+"&type=like&units=imperial"
 
-    parsed_weather_result = call_open_weather_api(url)
+#     parsed_weather_result = call_open_weather_api(url)
 
-    parsed_weather_result['weather'].each do |result|
-        @description = result['description']
-    end
+#     parsed_weather_result['weather'].each do |result|
+#         @description = result['description']
+#     end
 
-    temp = parsed_weather_result['main']['temp']
+#     temp = parsed_weather_result['main']['temp']
 
-    @weatherStatus = "It is currently #{temp} and #{@description} outside."
+#     @weatherStatus = "It is currently #{temp} and #{@description} outside."
 
-  end
-end
+#   end
+# end
 
 
 post '/maps' do
@@ -79,9 +79,7 @@ post '/maps' do
   @lon = settings.lon.to_s
 
   place = Places.new(@lat, @lon)
-#  weather = Weather.new(@lat, @lon)
 
-#  @weather =
   @address = place.address
   @phone_number = place.phone_number
   @name = place.name
@@ -89,6 +87,11 @@ post '/maps' do
   @placeid = place.placeid
   @addressformat = @address.gsub(' ','+')
   @open_now = place.open_now
+
+  # weather = Weathers.new(@lat, @lon)
+
+  # @weatherStatus = weather.weatherStatus
+
   erb :restaurant
   puts "IN MAPS!!!!!"
   pp params
@@ -109,9 +112,9 @@ get '/places' do
   @addressformat = @address.gsub(' ','+')
   @open_now = place.open_now
 
-  weather = Weathers.new(@lat, @lon)
+  # weather = Weathers.new(@lat, @lon)
 
-  @weatherStatus = weather.weatherStatus
+  # @weatherStatus = weather.weatherStatus
 
   erb :restaurant
 end

@@ -2,10 +2,7 @@
 
   <div class="col-xs-6 col-sm-4 pad" >
     <p>
-      Your location is: <br>
-      Lat: <%= @place.lat %> <br>
-      Lon: <%= @place.lon %>
-
+      <%= @weatherStatus %>
     </p>
     <p>
       You're going to eat at:<b> <%=  @place.name %></b> <br>
@@ -18,7 +15,6 @@
       <% elsif @open_now.eql?("Closed")  %>
         <font color="red">Closed</font><br>
       <% end %>
-      Place ID: <%=  @place.placeid %><br>
     </p>
 
     <div class="Flexible-container">

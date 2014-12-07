@@ -127,10 +127,10 @@ get '/places' do
   erb :restaurant
 
    open_now = ""
-  
+
    if result.include? "opening_hours"
      result['opening_hours']['open_now'] == true ? open_now = "Open" : open_now = "Closed"
    end
-  
+
    @restaurant[result['name']] = open_now;
 end
