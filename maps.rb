@@ -122,7 +122,7 @@ class Weathers
       display_weather
   end
 
-  def call_google_places_api(url)
+  def call_open_weather_api(url)
           json_response = HTTParty.get(url).body
           return JSON.parse( json_response )
   end

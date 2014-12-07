@@ -1,0 +1,52 @@
+<div class="row namebg">
+
+  <div class="col-xs-6 col-sm-4 pad" >
+    <p>
+      Your location is: <br>
+      Lat: <%= @lat %> <br>
+      Lon: <%= @lon %>
+
+    </p>
+
+    <p>
+      You're going to eat at:<b> <%= @name %></b> <br>
+      Rating: <%= @rating %> / 5 <br>
+      Phone number: <%= @phone_number %> <br>
+      Address: <%= @address %> <br>
+      <% if @open_now.eql?("Open now") %>
+          <font color="green">Open</font><br>
+      <% elsif @open_now.eql?("Closed")  %>
+          <font color="red">Closed</font><br>
+      <% end %>
+      Weather: <%= @weatherStatus %><br>
+    </p>
+
+    <div class="Flexible-container">
+      <iframe class="map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4&q=+<%= @addressformat %>"></iframe>
+    </div>
+
+
+
+  </div>
+  <div class="col-xs-6 col-sm-4">
+
+      <h2>Change settings:</h2>
+      <img width="150" height="150" onclick="getLocation()" src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/define_location.png" alt="Get Geolocation"/>
+      <form name="myform" method="GET" action="./maps">
+        <input type="text" name="locationinput" placeholder="Search City, State, or Zip"><br>
+        <label for="mile">How Many Miles Could You Travel?:</label>
+        <input type="range" name="mile" id="mile" value="5" min="1" max="100">
+        <input type="submit" name="button" value="Submit" onClick="parse(this.form)">
+      </form>
+  </div>
+</div>
+
+
+
+
+
+<!-- <p>
+  <button type="button" id="skipRestaurant" onclick="onClickSkip()">
+    Skip This Restaurant</button>
+</p>
+ -->
