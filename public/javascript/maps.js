@@ -4,6 +4,7 @@ function getLocation() {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
         document.write("Geolocation is not supported by this browser.");
+        console.log("user rejected location request")
     }
 }
 
