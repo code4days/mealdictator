@@ -4,7 +4,7 @@ require 'json'
 require 'httparty'
 require './places'
 require './maps'
-# require './weathers'
+require './weathers'
 require 'pp'
 
 
