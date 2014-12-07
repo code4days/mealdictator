@@ -14,10 +14,11 @@
       Rating: <%=  @place.rating %> / 5 <br>
       Phone number: <%=  @place.phone_number %> <br>
       Address: <%= @place.address %> <br>
-      <% if @open_now.eql?("Open now") %>
-        <%= @periods %><br>
+
+      <% if @place.open_now.eql?("Open now") %>
+        <%= @place.periods %><br>
         <font size="3" color="green">Open now</font><br>
-      <% elsif @open_now.eql?("Closed")  %>
+      <% elsif @place.open_now.eql?("Closed")  %>
         <font color="red">Closed</font><br>
       <% end %>
     </p>
