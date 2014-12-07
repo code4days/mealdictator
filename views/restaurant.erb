@@ -3,26 +3,27 @@
   <div class="col-xs-6 col-sm-4 pad" >
     <p>
       Your location is: <br>
-      Lat: <%= @lat %> <br>
-      Lon: <%= @lon %>
+      Lat: <%= @place.lat %> <br>
+      Lon: <%= @place.lon %>
 
     </p>
 
     <p>
-      You're going to eat at:<b> <%= @name %></b> <br>
-      Rating: <%= @rating %> / 5 <br>
-      Phone number: <%= @phone_number %> <br>
-      Address: <%= @address %> <br>
+      You're going to eat at:<b> <%=  @place.name %></b> <br>
+      Rating: <%=  @place.rating %> / 5 <br>
+      Phone number: <%=  @place.phone_number %> <br>
+      Address: <%= @place.address %> <br>
       <% if @open_now.eql?("Open now") %>
-          <font color="green">Open</font><br>
+        <%= @periods %><br>
+        <font size="3" color="green">Open now</font><br>
       <% elsif @open_now.eql?("Closed")  %>
-          <font color="red">Closed</font><br>
+        <font color="red">Closed</font><br>
       <% end %>
-      Place ID: <%= @placeid %><br>
+      Place ID: <%=  @place.placeid %><br>
     </p>
 
     <div class="Flexible-container">
-      <iframe class="map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4&q=+<%= @addressformat %>"></iframe>
+      <iframe class="map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4&q=+<%=  @place.address.gsub(' ','+') %>"></iframe>
     </div>
 
 
@@ -32,12 +33,17 @@
 
       <h2>Change settings:</h2>
       <img width="150" height="150" onclick="getLocation()" src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/define_location.png" alt="Get Geolocation"/>
-      <form name="myform" method="GET" action="./maps">
+
+    <form name="myform" method="post" action="./places">
         <input type="text" name="locationinput" placeholder="Search City, State, or Zip"><br>
-        <label for="mile">How Many Miles Could You Travel?:</label>
-        <input type="range" name="mile" id="mile" value="5" min="1" max="100">
-        <input type="submit" name="button" value="Submit" onClick="parse(this.form)">
+
+        <label for="radius">How Many Miles Could You Travel?:</label>
+        <input type="range" name="radius" id="mile" value="5" min="1" max="100">
+
+        <!--<input type="submit" name="button" value="Submit" onClick="parse(this.form)">-->
+         <input type="submit" name="button" value="Submit">
       </form>
+
   </div>
 </div>
 

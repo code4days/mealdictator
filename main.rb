@@ -2,7 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'json'
 require 'httparty'
-#require './places'
+require './places'
 require './maps'
 require 'pp'
 
