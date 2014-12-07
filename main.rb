@@ -6,7 +6,7 @@ require './places'
 require './maps'
 require './weathers'
 require 'pp'
-require 'db'
+require './db'
 
 
 
