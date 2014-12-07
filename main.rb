@@ -4,6 +4,7 @@ require 'json'
 require 'httparty'
 require './places'
 require './maps'
+# require './weathers'
 require 'pp'
 
 
@@ -18,7 +19,7 @@ end
 #   mile = params[:mile]
 #   button = params[:button]
 #  "latitude - #{query} longitude - #{mile}"
-#   erb :value 
+#   erb :value
 #end
 
 get '/geo' do
