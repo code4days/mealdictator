@@ -44,6 +44,6 @@ function parse(form) {
 
 function onClickSkip(){
     console.log("Pressed Skip");
-    window.location.assign("/dataaccess?restaurant=testRestaurant");
+    window.location.assign("/");
 }
 
