@@ -13,9 +13,10 @@
         <% elsif @place.open_now.eql?("Closed")  %>
           <font color="red">Closed</font><br>
         <% end %>
+        <a href="https://twitter.com/share?url=http://www.mealdictator.com&text=I'm%20going%20to%20eat%20at%20<%= @place.name %>+-%20Thanks%20to%20"> <img src="images/twitter.png" height="40px"> </a>
       </p>
 
-      <div>
+      <div class="skip">
         <button type="button" id="skipRestaurant" onclick="onClickSkip()">Skip This Restaurant</button>
       </div>
 
@@ -47,7 +48,7 @@
 
           <label for="radius">How Many Miles Could You Travel?</label>
           <input type="range" name="radius" id="mile" value="5" min="1" max="100">
-		  
+
 		  <input type="hidden" name="lat" value="<%= @place.lat %>">
           <input type="hidden" name="lon" value="<%= @place.lon %>">
 
@@ -57,11 +58,13 @@
 
   </div>
 </div>
+<div class="row">
+  <div class="col-xs-6 location">
 <% if !@error %>
-  <div class="row">
-    <div class="col-xs-6 location">
-      <p>Your location is: Lat: <%= @place.lat %> Lon: <%= @place.lon %></p>
-    </div>
-  </div>
+  <p>Your location is: Lat: <%= @place.lat %> Lon: <%= @place.lon %></p>
 <% else %>
 <% end %>
+ </div>
+</div>
+
+

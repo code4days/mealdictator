@@ -49,6 +49,12 @@ div.manualLoc {
     margin: 65px 0 0 0;
 }
 
+#skipRestaurant {
+    width: 234px;
+}
+.skip {
+    width: 300px;
+}
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) {
 
 .col-xs-6 {
