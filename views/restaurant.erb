@@ -23,6 +23,11 @@
       <% end %>
     </p>
 
+        <p>
+          It is currently <%= @weather.temperature.to_s%>&deg;F and <%= @weather.description %> outside.
+        </p>
+
+
     <div class="Flexible-container">
       <iframe class="map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4&q=+<%=  @place.address.gsub(' ','+') %>"></iframe>
     </div>
@@ -44,7 +49,8 @@
 
         <label for="radius">How Many Miles Could You Travel?:</label>
         <input type="range" name="radius" id="mile" value="5" min="1" max="100">
-
+         <input type="hidden" name="lat" value="<%= @place.lat %>">
+         <input type="hidden" name="lon" value="<%= @place.lon %>">
         <!--<input type="submit" name="button" value="Submit" onClick="parse(this.form)">-->
          <input type="submit" name="button" value="Submit">
       </form>

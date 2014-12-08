@@ -1,3 +1,4 @@
+require './weathers'
 class Places
 
   attr_reader :lat, :lon, :address, :phone_number, :name, :rating, :placeid, :open_now, :periods
@@ -94,6 +95,9 @@ get '/places' do
 
   @place = Places.new(lat, lon, )
 
+  @weather = Weathers.new(lat,lon)
+
+
   # @address = place.address
   # @phone_number = place.phone_number
   # @name = place.name
@@ -110,11 +114,23 @@ post '/places' do
   query = params[:locationinput]
   radius = params[:radius]
 
+  puts query.class
+  puts query.empty?
 
-  settings = Maps.new(query)
+  puts "before IF in post places"
 
+  if query.empty?
+    lat = params[:lat]
+    lon = params[:lon]
 
-  @place = Places.new(settings.lat, settings.lon, radius)
+    @place = Places.new(lat, lon, radius)
+
+  else
+
+    settings = Maps.new(query)
+    @place = Places.new(settings.lat, settings.lon, radius)
+
+  end
 
   erb :restaurant
 
