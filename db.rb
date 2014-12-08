@@ -1,8 +1,8 @@
 require 'data_mapper'
 
 #DataMapper.setup(:default, 'mysql://user:password@hostname/database')
-#DataMapper.setup(:default, "mysql://" + ENV['RDS_USERNAME'] + ":" + ENV['RDS_PASSWORD'] + "@" + ENV['RDS_HOSTNAME'] + "/" + ENV['RDS_DB_NAME'])
-DataMapper.setup(:default, "mysql://" + ENV['RDS_USERNAME'] + ":" + ENV['RDS_PASSWORD'] + "@" + "aa99ieoikktve5.co3wdyunphxf.us-east-1.rds.amazonaws.com/" + ENV['RDS_DB_NAME'])
+DataMapper.setup(:default, "mysql://" + ENV['RDS_USERNAME'] + ":" + ENV['RDS_PASSWORD'] + "@" + ENV['RDS_HOSTNAME'] + "/" + ENV['RDS_DB_NAME'])
+#DataMapper.setup(:default, "mysql://" + ENV['RDS_USERNAME'] + ":" + ENV['RDS_PASSWORD'] + "@" + "aa99ieoikktve5.co3wdyunphxf.us-east-1.rds.amazonaws.com/" + ENV['RDS_DB_NAME'])
 
 
 class DataStuff
