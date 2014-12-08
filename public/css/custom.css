@@ -1,7 +1,5 @@
 .social { width:  250px;}
 
-.navbar-brand { text-shadow: none;}
-
 #skipRestaurant {width: inherit;}
 
 .Flexible-container {
@@ -10,6 +8,7 @@
     padding-top: 30px;
     height: 0;
     overflow: hidden;
+    margin: 0 0 15px 0;
 }
 
 .Flexible-container iframe,
@@ -24,8 +23,34 @@
 .logo-head {margin: 10px 0 0 0}
 .logo-head h1 {
     font-size: 3em;
-    float: left;
+    /*float: left;*/
     /*font-family: 'Monofett', cursive;*/
     font-family: 'Bangers', cursive;
 }
 
+span.navbar-brand{
+    font-family: 'Bangers', cursive;
+    color: white !important;
+    text-shadow: none;
+}
+
+div.location {
+    font-size: 1em;
+    font-weight: 300;
+    color: black;
+}
+
+h2.location{
+    margin: 0px 0 25px;
+}
+
+div.manualLoc {
+    margin: 65px 0 0 0;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) {
+
+.col-xs-6 {
+    width: 100%;
+ }
+}
