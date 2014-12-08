@@ -16,11 +16,11 @@
       </p>
 
       <div>
-        <button type="button" id="skipRestaurant" onclick="onClickSkip()">Skip This Restaurant</button>
+        <button type="button" id="skipRestaurant" onclick="onClickSkip(<%= @place.lat %>, <%= @place.lon %>, <%= @place.radius %> )">Skip This Restaurant</button>
       </div>
 
         <p>
-          It is currently <%= @weather.temperature.to_s%>&deg;F and <%= @weather.description %> outside.
+          It is currently <%= @weather.temperature.to_s %>&deg;F and <%= @weather.description %> outside.
         </p>
 
 
@@ -42,11 +42,12 @@
     <div class="manualLoc">
       <h4>Manualy enter location</h4>
 
-      <form name="myform" method="post" action="./places">
+      <form name="myform" method="post" action="/places">
           <input type="text" name="locationinput" placeholder="Search City, State, or Zip"><br>
 
           <label for="radius">How Many Miles Could You Travel?</label>
-          <input type="range" name="radius" id="mile" value="5" min="1" max="100">
+          <input type="range" name="radius" id="mile" value="<%= @place.radius / 1609 %>" min="1" max="100">
+
 		  
 		  <input type="hidden" name="lat" value="<%= @place.lat %>">
           <input type="hidden" name="lon" value="<%= @place.lon %>">

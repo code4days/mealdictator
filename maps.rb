@@ -68,53 +68,53 @@ end
 # end
 
 
-post '/maps' do
-  @query = params[:locationinput]
-  @mile = params[:radius]
-  #@button = params[:button]
-
-  settings = Maps.new(@query, @mile)
-
-  @lat = settings.lat.to_s
-  @lon = settings.lon.to_s
-
-  place = Places.new(@lat, @lon)
-
-  @address = place.address
-  @phone_number = place.phone_number
-  @name = place.name
-  @rating = place.rating
-  @placeid = place.placeid
-  @addressformat = @address.gsub(' ','+')
-  @open_now = place.open_now
-
-  # weather = Weathers.new(@lat, @lon)
-
-  # @weatherStatus = weather.weatherStatus
-
-  erb :restaurant
-  puts "IN MAPS!!!!!"
-  pp params
-  puts "leaving maps!!!"
-end
-
-get '/places' do
-  @lat = params[:lat]
-  @lon = params[:lon]
-
-  place = Places.new(@lat, @lon)
-
-  @address = place.address
-  @phone_number = place.phone_number
-  @name = place.name
-  @rating = place.rating
-  @placeid = place.placeid
-  @addressformat = @address.gsub(' ','+')
-  @open_now = place.open_now
-
-  # weather = Weathers.new(@lat, @lon)
-
-  # @weatherStatus = weather.weatherStatus
-
-  erb :restaurant
-end
+# post '/maps' do
+#   @query = params[:locationinput]
+#   @mile = params[:radius]
+#   #@button = params[:button]
+#
+#   settings = Maps.new(@query, @mile)
+#
+#   @lat = settings.lat.to_s
+#   @lon = settings.lon.to_s
+#
+#   place = Places.new(@lat, @lon)
+#
+#   @address = place.address
+#   @phone_number = place.phone_number
+#   @name = place.name
+#   @rating = place.rating
+#   @placeid = place.placeid
+#   @addressformat = @address.gsub(' ','+')
+#   @open_now = place.open_now
+#
+#   # weather = Weathers.new(@lat, @lon)
+#
+#   # @weatherStatus = weather.weatherStatus
+#
+#   erb :restaurant
+#   puts "IN MAPS!!!!!"
+#   pp params
+#   puts "leaving maps!!!"
+# end
+#
+# get '/places' do
+#   @lat = params[:lat]
+#   @lon = params[:lon]
+#
+#   place = Places.new(@lat, @lon)
+#
+#   @address = place.address
+#   @phone_number = place.phone_number
+#   @name = place.name
+#   @rating = place.rating
+#   @placeid = place.placeid
+#   @addressformat = @address.gsub(' ','+')
+#   @open_now = place.open_now
+#
+#   # weather = Weathers.new(@lat, @lon)
+#
+#   # @weatherStatus = weather.weatherStatus
+#
+#   erb :restaurant
+# end

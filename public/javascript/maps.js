@@ -42,8 +42,8 @@ function parse(form) {
     window.location.assign("/maps?query=" + query + "&mile=" + mile);
 }
 
-function onClickSkip(){
+function onClickSkip(lat, lon, radius){
     console.log("Pressed Skip");
-    window.location.assign("/");
+    window.location.assign("/places?lat=" + lat + "&lon=" + lon + "&radius=" + radius);
 }
 

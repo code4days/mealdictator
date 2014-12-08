@@ -1,9 +1,10 @@
 require './weathers'
+
 class Places
 
-  attr_reader :lat, :lon, :address, :phone_number, :name, :rating, :placeid, :open_now, :periods
+  attr_reader :lat, :lon, :address, :phone_number, :name, :rating, :placeid, :open_now, :periods, :radius
 
-  def initialize(lat, lon, radius=1600)
+  def initialize(lat, lon, radius=1609)
     @lat = lat
     @lon = lon
     @radius = radius
@@ -66,21 +67,23 @@ class Places
       @rating = details_result['result']['rating']
     end
 
-    if  details_result['result']['opening_hours']['open_now'] != nil
-      if details_result['result']['opening_hours']['open_now'] == true
-        @open_now = "Open now"
+    if details_result['result'].include? "opening_hours"
+      if  details_result['result']['opening_hours']['open_now'] != nil
+        if details_result['result']['opening_hours']['open_now'] == true
+          @open_now = "Open now"
+        else
+          @open_now = "Closed"
+        end
       else
-        @open_now = "Closed"
+        @open_now = "No data"
       end
-    else
-      @open_now = "No data"
+      if details_result['result']['opening_hours']['periods'][Time.now.wday] != nil
+        @periods = details_result['result']['opening_hours']['periods'][Time.now.wday]
+        @periods = Time.parse(@periods['open']['time'].insert(2,":")).strftime("%I:%M%p")+ " - " + Time.parse(@periods['close']['time'].insert(2,":")).strftime("%I:%M%p")
+      end
+      end
     end
 
-    if details_result['result']['opening_hours']['periods'][Time.now.wday] != nil
-      @periods = details_result['result']['opening_hours']['periods'][Time.now.wday]
-      @periods = Time.parse(@periods['open']['time'].insert(2,":")).strftime("%I:%M%p")+ " - " + Time.parse(@periods['close']['time'].insert(2,":")).strftime("%I:%M%p")
-    end
-  end
 end
 
 get '/places/:error' do
@@ -111,13 +114,20 @@ get '/places' do
 end
 
 
-
 post '/places' do
+
+  puts "IN PLACES"
+
   query = params[:locationinput]
   radius = params[:radius]
 
-  puts query.class
-  puts query.empty?
+  puts radius.class
+  radius = radius.to_i * 1609
+
+  puts "radius:" + radius.to_s
+  puts "query: " + query
+
+
 
   puts "before IF in post places"
 
@@ -125,12 +135,21 @@ post '/places' do
     lat = params[:lat]
     lon = params[:lon]
 
+    puts lat
+    puts lon
+
     @place = Places.new(lat, lon, radius)
+    @weather = Weathers.new(lat,lon)
 
   else
 
+    puts "INELSE " + query
     settings = Maps.new(query)
+    puts settings.lat
+    puts settings.lon
+
     @place = Places.new(settings.lat, settings.lon, radius)
+    @weather = Weathers.new(settings.lat, settings.lon)
 
   end
 
@@ -139,23 +158,23 @@ post '/places' do
 end
 
 
-get '/places' do
-  @lat = params[:lat]
-  @lon = params[:lon]
-
-  place = Places.new(@lat, @lon)
-  @address = place.address
-  @phone_number = place.phone_number
-  @name = place.name
-  @rating = place.rating
-
-  erb :restaurant
-
-   open_now = ""
-
-   if result.include? "opening_hours"
-     result['opening_hours']['open_now'] == true ? open_now = "Open" : open_now = "Closed"
-   end
-
-   @restaurant[result['name']] = open_now;
-end
+# get '/places' do
+#   @lat = params[:lat]
+#   @lon = params[:lon]
+#
+#   place = Places.new(@lat, @lon)
+#   @address = place.address
+#   @phone_number = place.phone_number
+#   @name = place.name
+#   @rating = place.rating
+#
+#   erb :restaurant
+#
+#    open_now = ""
+#
+#    if result.include? "opening_hours"
+#      result['opening_hours']['open_now'] == true ? open_now = "Open" : open_now = "Closed"
+#    end
+#
+#    @restaurant[result['name']] = open_now;
+# end
