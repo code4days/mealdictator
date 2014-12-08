@@ -13,21 +13,15 @@
         <% elsif @place.open_now.eql?("Closed")  %>
           <font color="red">Closed</font><br>
         <% end %>
-         <a href="https://twitter.com/share?text=I'm%20going%20to%20eat%20at%20<%= @place.name %> -%20Thanks%20to&url=http://www.mealdictator.com"> <img src="images/twitter.png" height="40px"> </a>
       </p>
 
       <div class="skip">
         <button type="button" id="skipRestaurant" onclick="onClickSkip(<%= @place.lat %>, <%= @place.lon %>, <%= @place.radius %> )">Skip This Restaurant</button>
       </div>
 
-        <p>
-          It is currently <%= @weather.temperature.to_s %>&deg;F and <%= @weather.description %> outside.
-        </p>
-
-
-    <div class="Flexible-container">
-      <iframe class="map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4&q=+<%=  @place.address.gsub(' ','+') %>"></iframe>
-    </div>
+      <div class="Flexible-container">
+        <iframe class="map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4&q=+<%=  @place.address.gsub(' ','+') %>"></iframe>
+      </div>
     <% else %>
       <p>You denied us access to your location! Select one from right -></p>
     <% end %>
@@ -36,20 +30,24 @@
 
 
   <div class="col-xs-6">
-
-    <h2 class="location">Define your loaction</h2>
-    <button type="button" onclick="getLocation()" alt="Get Geolocation">Use current location</button>
+    <div class="weather">
+      <h4>Current Weather conditions</h4>
+      <p>
+        Temperature: <strong><%= @weather.temperature.to_s %>&deg;F<br></strong>
+        Current Conditions: <strong><%= @weather.description %></strong>
+      </p>
+    </div>
 
     <div class="manualLoc">
-      <h4>Manualy enter location</h4>
+      <h4 class="location">Redefine your loaction</h4>
 
       <form name="myform" method="post" action="/places">
           <input type="text" name="locationinput" placeholder="Search City, State, or Zip"><br>
 
-          <label for="radius">How Many Miles Could You Travel?</label>
+          <label for="radius">Change search radius</label>
           <input type="range" name="radius" id="mile" value="<%= @place.radius / 1609 %>" min="1" max="100">
 
-		  
+
 		  <input type="hidden" name="lat" value="<%= @place.lat %>">
           <input type="hidden" name="lon" value="<%= @place.lon %>">
 
@@ -67,5 +65,11 @@
 <% end %>
  </div>
 </div>
+<div class="row">
+  <div class="text-center bottom-row" >
+    <a href="https://twitter.com/share?text=I'm%20going%20to%20eat%20at%20<%= @place.name %> -%20Thanks%20to&url=http://www.mealdictator.com"> <img src="images/twitter.png" height="40px"> </a>
+  </div>
+</div>
+
 
 
