@@ -32,6 +32,7 @@ span.navbar-brand{
     font-family: 'Bangers', cursive;
     color: white !important;
     text-shadow: none;
+    font-size: 3em;
 }
 
 div.location {
