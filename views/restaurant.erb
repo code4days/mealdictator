@@ -33,13 +33,13 @@
     <div class="weather">
       <h4>Current Weather conditions</h4>
       <p>
-        Temperature: <strong><%= @weather.temperature.to_s %>&deg;C</strong><sub><sub> Best temp is Celcius temp</sub></sub><br>
+        Temperature: <strong><%= @weather.temperature.to_s %>&deg;F<br></strong>
         Current Conditions: <strong><%= @weather.description %></strong>
       </p>
     </div>
 
     <div class="manualLoc">
-      <h4 class="location">Redefine your location</h4>
+      <h4 class="location">Redefine your loaction</h4>
 
       <form name="myform" method="post" action="/places">
           <input type="text" name="locationinput" placeholder="Search City, State, or Zip"><br>
@@ -67,7 +67,6 @@
 </div>
 <div class="row">
   <div class="text-center bottom-row" >
-    <a href="https://www.facebook.com/dialog/feed?app_id=694165360698061&link=mealdictator.com&picture=http%3A%2F%2Fwww.mealdictator.com%2Fimages%2Flogo.png&name=Meal%20Dictator&caption=%20&description=Thanks%20to%20the%20dear%20Meal%20Dictator%20I'm%20going%20to%20eat%20at%20<%= @place.name %>!&redirect_uri=http%3A%2F%2Fwww.facebook.com%2F" target="_blank">Share on Facebook</a>
     <a href="https://twitter.com/share?text=I'm%20going%20to%20eat%20at%20<%= @place.name %> -%20Thanks%20to&url=http://www.mealdictator.com"> <img src="images/twitter.png" height="40px"> </a>
   </div>
 </div>

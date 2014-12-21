@@ -20,9 +20,9 @@ class Maps
       url = "https://maps.googleapis.com/maps/api/geocode/json?address="+@query+""
 
       parsed_result = call_google_places_api(url)
-      
       #pp parsed_result
-      
+
+      #pp parsed_result
       parsed_result['results'].each do |result|
   	      x = result['geometry']['location']
           @lat = x['lat']

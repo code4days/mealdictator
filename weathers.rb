@@ -16,7 +16,7 @@ class Weathers
 
   def display_weather
 
-    url = "http://api.openweathermap.org/data/2.5/weather?lat="+@lat.to_s+"&lon="+@lon.to_s+"&type=like&units=metric"
+    url = "http://api.openweathermap.org/data/2.5/weather?lat="+@lat.to_s+"&lon="+@lon.to_s+"&type=like&units=imperial"
 
     parsed_weather_result = call_open_weather_api(url)
     #pp parsed_weather_result
