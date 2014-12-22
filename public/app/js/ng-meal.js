@@ -15,20 +15,22 @@ mealModule.config(function($stateProvider, $urlRouterProvider) {
 
         .state('geo-error', {
             url: "/geo-error",
-            templateUrl: "partials/geo-erro.html"
+            templateUrl: "partials/geo-error.html"
+            //template: "ERROR"
+
         })
     ;
 });
 
-mealModule.controller('geoController', function($scope) {
+mealModule.controller('geoController', function($scope, $state) {
    if (navigator.geolocation) {
        navigator.geolocation.getCurrentPosition(function(position){
            $scope.$apply(function(){
                $scope.position = position;
            });
        }, function(error) {
-           alert(error);
-           $state.go("geo-error");
+           //alert(error);
+           $state.go('geo-error');
        });
    }
 });
