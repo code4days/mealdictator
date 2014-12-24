@@ -98,19 +98,12 @@ get '/places' do
   lat = params[:lat]
   lon = params[:lon]
 
-  @place = Places.new(lat, lon, )
-
-  @weather = Weathers.new(lat,lon)
-
-
-  # @address = place.address
-  # @phone_number = place.phone_number
-  # @name = place.name
-  # @rating = place.rating
-  # @placeid = place.placeid
-  # @addressformat = @address.gsub(' ','+')
-  # @open_now = place.open_now
-  erb :restaurant
+  # @place = Places.new(lat, lon, )
+  #
+  # @weather = Weathers.new(lat,lon)
+  #
+  # erb :restaurant
+  "Coords: " + lat + lon
 end
 
 

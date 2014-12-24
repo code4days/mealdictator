@@ -4,26 +4,29 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link href="/javascript/maps.js" rel="js">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+    <meta property="og:image" content="/images/logo.png"/>
+    <meta property="og:title" content="The Meal Dictator"/>
+    <meta property="og:description" content="Thanks to the dear Meal Dictator I found a place to eat today!"/>
+
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+
+
+
+
+    <!--&lt;!&ndash; Latest compiled and minified CSS &ndash;&gt;-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">-->
+
+    <!--&lt;!&ndash; Optional theme &ndash;&gt;-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">-->
+
+
+    <link href='http://fonts.googleapis.com/css?family=Monofett|Bangers&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/custom.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Monofett|Bangers&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
-    <script type="text/javascript" src="javascript/maps.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
 
-
-
-
-    <!-- <link rel="stylesheet" href="customStyle.css"> -->
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
     <title>Meal Dictator</title>
 
@@ -38,33 +41,41 @@
         ga('send', 'pageview');
 
     </script>
-
-
-    <!--adding angularjs-->
-    <script src="/bower_components/angular/angular.min.js"></script>
-    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="/js/ng-meal.js"></script>
-
 </head>
 
 <body>
-<a href="content" class="sr-only">Skip to main content</a>
+
 
 <div class="navbar navbar-default navbar-static-top">
     <div class="container" >
-        <span class="navbar-brand">Meal Dictator</span>
+        <span class="navbar-brand">Meal Dictator <sup><sup><sub><sub> beta</sub></sub></sup></sup></span>
     </div>
 </div>
-<div class="container container_location" id="content">
+<div >
     <h1> Hello {{yourName}} </h1>
     <input type="text"name="name" ng-model="yourName">
 
+    <div class="container container_location" id="content">
+        <div ui-view>
 
-    <div ui-view>
-
+        </div>
     </div>
 
 </div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>-->
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<!--adding angularjs-->
+<script src="/bower_components/angular/angular.min.js"></script>
+<script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="/js/ng-meal.js"></script>
+
 
 </body>
 </html>

@@ -15,7 +15,7 @@ end
 
 get '/' do
 
- File.read("public/app/index.html")
+File.read("public/app/index.html")
 
 end
 
