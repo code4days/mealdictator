@@ -1,9 +1,21 @@
 <div>
     <p ng-bind="position|json"></p>
     <p>
+        {{place}}<br /><br />
         Longitude: {{position.coords.longitude}} <br />
         Latitude: {{position.coords.latitude}} <br />
-        Server stuff: {{server_stuff}}
+        You're going to eat at: {{place.name}} <br />
+        Rating: {{place.rating}} <br />
+        Phone number: {{place.phone_number}} <br />
+        Address: {{place.address}}<br />
+        Price Level: {{place.price_level}}<br />
+        {{place.open_now}}<br /><br />
+        <!--{{place.weekday_text}}-->
+
+        <div ng-repeat="weekday in place.weekday_text">
+            {{weekday}}
+        </div>
+<!--todo: add angular to lines to show when available only, how to loop through all weekdays-->
 
     </p>
 </div>

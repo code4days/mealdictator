@@ -29,7 +29,7 @@ mealModule.controller('geoController', function($scope, $state, $http) {
 
                $http.get("/places?lat=" + $scope.position.coords.latitude + "&lon=" + $scope.position.coords.longitude)
                    .success( function(data) {
-                       $scope.server_stuff = data;
+                       $scope.place = data;
                    });
 
                //send params to /places... let places parse and return JSON, parse and create display on home

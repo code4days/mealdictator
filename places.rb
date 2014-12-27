@@ -1,13 +1,17 @@
 require './weathers'
+require 'json'
+
 
 class Places
 
-  attr_reader :lat, :lon, :address, :phone_number, :name, :rating, :placeid, :open_now, :periods, :radius
+  attr_reader :lat, :lon, :address, :phone_number, :name, :rating, :placeid, :price_level, :open_now, :periods, :radius, :weekday_text
 
   def initialize(lat, lon, radius=1609)
     @lat = lat
     @lon = lon
     @radius = radius
+    @rating = "No rating available"
+    @price_level = "Not available"
 
     parse_nearby_restaurants
 
@@ -47,10 +51,13 @@ class Places
 
     details_result = call_google_places_api(details_url)
 
+    pp details_result
+
     if details_result['result']['formatted_address'] != nil
       @address = details_result['result']['formatted_address']
     end
 
+    #THINK ABOUT REMOVING THIS:
     if details_result['result']['place_id'] != nil
       @placeid = details_result['result']['place_id']
     end
@@ -67,20 +74,26 @@ class Places
       @rating = details_result['result']['rating']
     end
 
-    if details_result['result'].include? "opening_hours"
-      if  details_result['result']['opening_hours']['open_now'] != nil
-        if details_result['result']['opening_hours']['open_now'] == true
+    if  details_result['result'].include? "price_level" #&& details_result['result']['price_level'] != nil
+      @price_level = details_result['result']['price_level']
+      @price_level = "$" * @price_level
+    end
+
+    if details_result['result'].include? "opening_hours" #&& details_result['result']['opening_hours']['open_now'] != nil
+
+
+      if details_result['result']['opening_hours']['open_now'] == true
           @open_now = "Open now"
         else
           @open_now = "Closed"
         end
-      else
-        @open_now = "No data"
-      end
+
       if details_result['result']['opening_hours']['periods'][Time.now.wday] != nil
         @periods = details_result['result']['opening_hours']['periods'][Time.now.wday]
         @periods = Time.parse(@periods['open']['time'].insert(2,":")).strftime("%I:%M%p")+ " - " + Time.parse(@periods['close']['time'].insert(2,":")).strftime("%I:%M%p")
       end
+      @weekday_text =  details_result['result']['opening_hours']['weekday_text']
+      #example: https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJIZtG1mlaQIgR6gd0v9uNliE&key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4
       end
     end
 
@@ -98,12 +111,37 @@ get '/places' do
   lat = params[:lat]
   lon = params[:lon]
 
-  # @place = Places.new(lat, lon, )
+   @place = Places.new(lat, lon, )
   #
   # @weather = Weathers.new(lat,lon)
   #
   # erb :restaurant
-  "Coords: " + lat + lon
+  # "Coords: " + lat + lon
+  # @place.to_json
+
+
+
+  puts "======================"
+
+
+  puts
+
+  h = {}
+  @place.instance_variables.each { |var| h[var.to_s.delete("@").to_sym] = @place.instance_variable_get(var)}
+  #puts @place.instance_variables
+  #print h
+  puts
+  puts @place.open_now
+  puts "======================"
+  content_type :json
+
+  print @place.weekday_text
+  puts
+  print h[:weekday_text]
+
+  #{:name => @place.name, :rating => @place.rating, :phone => @place.phone_number, :address => @place.address}.to_json
+  #Hash[*@place.instance_variables.map{ |var| [var.to_s.delete("@").to_sym, @place.instance_variable_get(var)]}.flatten].to_json
+  h.to_json
 end
 
 
@@ -149,25 +187,3 @@ post '/places' do
   erb :restaurant
 
 end
-
-
-# get '/places' do
-#   @lat = params[:lat]
-#   @lon = params[:lon]
-#
-#   place = Places.new(@lat, @lon)
-#   @address = place.address
-#   @phone_number = place.phone_number
-#   @name = place.name
-#   @rating = place.rating
-#
-#   erb :restaurant
-#
-#    open_now = ""
-#
-#    if result.include? "opening_hours"
-#      result['opening_hours']['open_now'] == true ? open_now = "Open" : open_now = "Closed"
-#    end
-#
-#    @restaurant[result['name']] = open_now;
-# end
