@@ -51,7 +51,7 @@ class Places
 
     details_result = call_google_places_api(details_url)
 
-    pp details_result
+    #pp details_result
 
     if details_result['result']['formatted_address'] != nil
       @address = details_result['result']['formatted_address']
@@ -135,10 +135,6 @@ get '/places' do
   puts "======================"
   content_type :json
 
-  print @place.weekday_text
-  puts
-  print h[:weekday_text]
-
   #{:name => @place.name, :rating => @place.rating, :phone => @place.phone_number, :address => @place.address}.to_json
   #Hash[*@place.instance_variables.map{ |var| [var.to_s.delete("@").to_sym, @place.instance_variable_get(var)]}.flatten].to_json
   h.to_json
@@ -147,12 +143,15 @@ end
 
 post '/places' do
 
+  @json = JSON.parse(request.body.read)
   puts "IN PLACES"
+  print @json
 
-  query = params[:locationinput]
-  radius = params[:radius]
 
-  puts radius.class
+  query = @json["locationInput"]
+  radius = @json["radius"]
+
+
   radius = radius.to_i * 1609
 
   puts "radius:" + radius.to_s
@@ -184,6 +183,11 @@ post '/places' do
 
   end
 
-  erb :restaurant
+  content_type :json
 
+  #move to own method
+  h = {}
+  @place.instance_variables.each { |var| h[var.to_s.delete("@").to_sym] = @place.instance_variable_get(var)}
+
+  h.to_json
 end

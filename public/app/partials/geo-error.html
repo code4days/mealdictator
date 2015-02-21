@@ -1,9 +1,21 @@
 <div>
+        <h4>Redefine your loaction</h4>
 
-    WHY YOU DENY LOCATION?????? PUT NEW LOCATION BELOW>>> NOWWWWWW!!!!<br />
-    <input type="text" name="error" ng-model="geoError">
-    {{geoError}}
-    <br />
-    <a href="/">GO HOME</a>
+        <form name="customSettings">
+            <input type="text" placeholder="Search City, State, or Zip" ng-model="newSettings.locationInput"><br>
+
+            <!--<label for="radius">Change search radius</label>-->
+            <!--<input type="range" name="radius" id="mile" value="1" min="1" max="100">-->
+            <input type="text" value="1" min="1" max="100" ng-model="newSettings.radius">
+
+
+            <!--<input type="hidden" name="lat" ng-model="newSettings.lat">-->
+            <!--<input type="hidden" name="lon" ng-model="newSettings.lon">-->
+
+            <br>
+            <input type="submit" name="button" value="Submit" ng-click="addSettings()">
+        </form>
+
+</div>
 
 </div>
