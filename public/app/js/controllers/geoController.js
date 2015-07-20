@@ -30,8 +30,8 @@ app.controller('GeoController', ['$scope', 'geoService', '$sce', '$window', 'pla
                 console.log("accuracy: " + position.coords.accuracy);
             },
             function error(err) {
-                //$window.location.href = '#/nogeo';
-                $location.path("#/nogeo");
+                $window.location.href = '#/nogeo';
+                //$location.path("/nogeo");
                 console.warn("error: " + err);
                 //todo: bool var can be used here too ??? thought
             });
