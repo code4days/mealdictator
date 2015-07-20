@@ -146,6 +146,7 @@ post '/places' do
   @json = JSON.parse(request.body.read)
   puts "IN PLACES"
   print @json
+  puts
 
 
   query = @json["locationInput"]
@@ -174,7 +175,10 @@ post '/places' do
   else
 
     puts "INELSE " + query
+
     settings = Maps.new(query)
+    settings.get_position
+
     puts settings.lat
     puts settings.lon
 

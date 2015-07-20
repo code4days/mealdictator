@@ -5,7 +5,7 @@ class Maps
   def initialize(query)
       @query = query
 
-      get_location
+      #get_location
   end
 
   def call_google_places_api(url)
@@ -13,7 +13,7 @@ class Maps
           return JSON.parse( json_response )
   end
 
-  def get_location
+  def get_position
       @query.gsub!(' ','%20')
       puts @query
 

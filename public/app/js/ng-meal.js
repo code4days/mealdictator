@@ -65,8 +65,8 @@ mealModule.config(function($stateProvider, $urlRouterProvider) {
 
 mealModule.controller('geoController', function($scope, $state, $http, $sce) {
    if (navigator.geolocation) {
-       navigator.geolocation.getCurrentPosition(function(position){
-           $scope.$apply(function(){
+       navigator.geolocation.getCurrentPosition(function (position){
+           $scope.$apply(function (){
                $scope.position = position;
 
                $http.get("/places?lat=" + $scope.position.coords.latitude + "&lon=" + $scope.position.coords.longitude)
@@ -124,7 +124,6 @@ mealModule.controller('CustomSettings', function($scope, $http, $state, Data) {
         console.log($scope.place_data)
 
         $state.go('test', {place_data: JSON.stringify($scope.place_data)});
-
 
     }
 

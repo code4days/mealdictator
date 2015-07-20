@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>
+    <h4>Redefine your loaction</h4>
+
+    <form name="customSettings">
+        <input type="text" placeholder="Search City, State, or Zip" ng-model="locationInput"><br>
+
+        <!--<label for="radius">Change search radius</label>-->
+        <!--<input type="range" name="radius" id="mile" value="1" min="1" max="100">-->
+        <input type="text" value="1" min="1" max="100" ng-model="radius">
+
+
+        <!--<input type="hidden" name="lat" ng-model="newSettings.lat">-->
+        <!--<input type="hidden" name="lon" ng-model="newSettings.lon">-->
+
+        <br>
+        <input type="button" name="button" value="Submit" ng-click="customLocation()">
+    </form>
+
+</div>
+
+</div>
+</body>
+</html>

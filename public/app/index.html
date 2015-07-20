@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
-<html ng-app="meal-app">
+<html>
 <head>
 
 </head>
 
-<body>
+<body ng-app="MealDictatorApp">
 
 
 <div >
@@ -12,7 +12,7 @@
     <input type="text"name="name" ng-model="yourName">
 
 
-    <div ui-view></div>
+    <div ng-view></div>
 
 
 
@@ -20,8 +20,20 @@
 
 <!--adding angularjs-->
 <script src="/bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
 <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-<script src="/js/ng-meal.js"></script>
+
+<!-- Modules -->
+<script src="js/app.js"></script>
+
+<!-- Controllers -->
+<script src="js/controllers/geoController.js"></script>
+<script src="js/controllers/NoGeoController.js"></script>
+<!-- Services -->
+<script src="js/services/geoService.js"></script>
+<script src="js/services/GeoPostService.js"></script>
+<script src="js/services/place.js"></script>
+
 
 
 </body>
