@@ -11,6 +11,7 @@ app.config(function($routeProvider) {
             templateUrl: 'partials/location_form.html'
         })
         .when('/restaurant', {
+            controller: 'RestaurantController',
             templateUrl: 'partials/restaurant.html'
         })
         .otherwise({

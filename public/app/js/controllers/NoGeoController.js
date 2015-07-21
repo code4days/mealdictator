@@ -28,7 +28,7 @@ app.controller('NoGeoController', ['$scope', 'GeoPostService', '$location', 'pla
             GeoPostService.getPlaces(position).success(function (data) {
                 //console.log(data);
                 place.setData(data);
-                $rootScope.x = place.getData();
+                //$rootScope.x = place.getData();
                 $location.path("/restaurant");
 
             });

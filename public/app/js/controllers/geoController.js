@@ -17,7 +17,7 @@ app.controller('GeoController', ['$scope', 'geoService', '$sce', '$window', 'pla
                 console.log(typeof position.coords);
                 geoService.getPlaces(position).success(function (data) {
                     place.setData(data);
-                    $rootScope.x = place.getData();
+                    //$rootScope.x = place.getData();
                     $location.path("/restaurant");
                     //$scope.place = data;
                     //$scope.map = $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/search?key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4&q=+" + $scope.place.address.replace(/\s/g, '+'));
