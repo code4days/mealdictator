@@ -98,7 +98,7 @@ get '/places' do
   lat = params[:lat]
   lon = params[:lon]
 
-  @place = Places.new(lat, lon, )
+  @place = Places.new(lat, lon)
 
   @weather = Weathers.new(lat,lon)
 
