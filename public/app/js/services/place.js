@@ -12,6 +12,7 @@ app.service('place', function () {
             localStorage.setItem("place", JSON.stringify(value));
         }
         //todo: think about adding a third function to clear the localStroage.
-        
+        //todo: think about having localStorage expire?
+
     }
 });

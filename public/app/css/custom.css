@@ -1,3 +1,16 @@
+.center {
+    width: 100%;
+    margin: 0 auto;
+}
+.greenyellow {
+    background: rgba(173, 255, 47, .3);
+}
+.red {
+    background: rgba(255, 0, 0, .4);
+}
+#place li {
+    list-style-type: none;
+}
 .social { width:  250px;}
 
 #skipRestaurant {width: inherit;}
@@ -32,7 +45,7 @@ span.navbar-brand{
     font-family: 'Bangers', cursive;
     color: white !important;
     text-shadow: none;
-    font-size: 3em;
+    font-size: 2em;
 }
 
 div.location {

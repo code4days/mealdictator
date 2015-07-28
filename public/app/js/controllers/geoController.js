@@ -1,6 +1,8 @@
 //in the controller we do the geo stuff, the http reqeust to get the location can be done in a service.
-app.controller('GeoController', ['$scope', 'geoService', '$sce', '$window', 'place', '$rootScope', '$location',
-    function($scope, geoService, $sce, $window, place, $rootScope, $location){
+app.controller('GeoController', ['$scope', 'geoService', 'GeoPostService', '$sce', '$window', 'place', '$rootScope', '$location',
+    function($scope, geoService, GeoPostService, $sce, $window, place, $rootScope, $location){
+
+        $scope.hasLocation = false;
 
     if (!navigator.geolocation) {
 
@@ -17,10 +19,12 @@ app.controller('GeoController', ['$scope', 'geoService', '$sce', '$window', 'pla
                 console.log(typeof position.coords);
                 geoService.getPlaces(position).success(function (data) {
                     place.setData(data);
+                    $scope.hasLocation = true;
+                    $scope.place_data = place.getData();
                     //$rootScope.x = place.getData();
-                    $location.path("/restaurant");
+                    //$location.path("/restaurant");
                     //$scope.place = data;
-                    //$scope.map = $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/search?key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4&q=+" + $scope.place.address.replace(/\s/g, '+'));
+                    $scope.map = $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/search?key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4&q=+" + $scope.place_data.address.replace(/\s/g, '+'));
                 });
                 geoService.getPlaces(position).error(function (data) {
                     console.log("error reading places");
@@ -30,11 +34,41 @@ app.controller('GeoController', ['$scope', 'geoService', '$sce', '$window', 'pla
                 console.log("accuracy: " + position.coords.accuracy);
             },
             function error(err) {
-                $window.location.href = '#/nogeo';
+                //$window.location.href = '#/nogeo';
                 //$location.path("/nogeo");
                 console.warn("error: " + err);
                 //todo: bool var can be used here too ??? thought
             });
+
+        //$scope.inputLocation = "";
+        //$scope.radius = 1;
+
+        $scope.customLocation = function customLocation() {
+            //todo:update service to take second param in func to know if it's post or not
+            //take values from form and passthem as a postion object into  geoservice to make a post request to server
+
+            var position = {
+                locationInput: $scope.locationInput,
+                radius: $scope.radius
+            };
+
+
+            console.log(position);
+            //console.log(JSON.stringify(position));
+            GeoPostService.getPlaces(position).success(function (data) {
+                //console.log(data);
+                place.setData(data);
+                $scope.hasLocation = true;
+                $scope.place_data = place.getData();
+                //$rootScope.x = place.getData();
+                //$location.path("/restaurant");
+                $scope.map = $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/search?key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4&q=+" + $scope.place_data.address.replace(/\s/g, '+'));
+            });
+            GeoPostService.getPlaces(position).error(function (data) {
+                console.log("Error in nogeoctrl: " + data);
+            })
+
+        }
 
     }
 }]);

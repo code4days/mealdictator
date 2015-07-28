@@ -1,28 +1,45 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html>
 <head>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <link href='http://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Meal Dictator</title>
 </head>
 
 <body ng-app="MealDictatorApp">
-
-
-<div >
-    <h1>In index: Hello {{yourName}} </h1>
-    <input type="text"name="name" ng-model="yourName">
-
+<!--<div id="headline">-->
+   <!--<div class="container">-->
+       <!--<header>-->
+           <!--<span>Meal Dictator</span>-->
+       <!--</header>-->
+   <!--</div>-->
+<!--</div>-->
+<md-toolbar layout="row" layout-padding>
+    <span class="navbar-brand">Meal Dictator</span>
+</md-toolbar>
+<div>
 
     <div ng-view></div>
 
-
-
 </div>
 
+<footer>
+    <div class="container">
+        <p>We always need a footer.</p>
+    </div>
+</footer>
 <!--adding angularjs-->
 <script src="/bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-route/angular-route.min.js"></script>
 <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+<!--angular-material-->
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.js"></script>
 <!-- Modules -->
 <script src="js/app.js"></script>
 
