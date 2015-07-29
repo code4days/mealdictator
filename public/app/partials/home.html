@@ -1,6 +1,6 @@
 <div layout="row" layout-sm="column" layout-padding layout-align="center">
-    <!--<div id="place" class="container" ng-show="hasLocation">-->
-    <md-content flex="55" flex-sm="100" id="place" class="greenyellow">
+    <div id="place" flex="55" flex-sm="100" ng-show="hasLocation">
+    <md-content class="greenyellow">
         <ul>
             <li>You're going to eat at: <b>{{ place_data.name }}</b></li>
             <li>Rating: {{ place_data.rating }} / 5</li>
@@ -21,9 +21,9 @@
             <md-button aria-label="Skip">Skip this restaurant</md-button>
         </div>
     </md-content>
-    <!--</div>-->
+    </div>
     <div flex="5"></div>
-    <div id="weather" flex="25" flex-sm="55" layout-align="start">
+    <div id="weather" flex="25" flex-sm="55" layout-align="start" ng-show="hasLocation">
             <md-toolbar class="md-accent">
                <div layout="row" layout-align="space-around center">
                    <div>
@@ -44,7 +44,7 @@
 </div>
 <div layout="row" layout-sm="column" layout-margin layout-padding>
     <!--</div>-->
-    <div id="map" flex="45">
+    <div id="map" flex="45" ng-show="hasLocation">
         <md-content>
             <iframe class="map" width="600"
                     height="450"
