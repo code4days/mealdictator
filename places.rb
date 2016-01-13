@@ -12,7 +12,7 @@ class Places
     @radius = radius
     @rating = "No rating available"
     @price_level = "Not available"
-
+    @has_error = false
     parse_nearby_restaurants
 
   end
@@ -44,59 +44,66 @@ class Places
     end
 
     place_id = restaurants[restaurants.keys.sample]
+    if place_id.nil?
+      @has_error = true
+    else
 
-    #do a details search to retrieve details about the selected location
-    details_url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + place_id + "&key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4"
-    #details_url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + place_id + "AIzaSyBWIRHm8UOx8VLKT5x13thHOO-2O0HtJKs"
+      puts "IN NEW ELSE"
+      #do a details search to retrieve details about the selected location
+      details_url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + place_id + "&key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4"
+      #details_url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + place_id + "AIzaSyBWIRHm8UOx8VLKT5x13thHOO-2O0HtJKs"
 
-    details_result = call_google_places_api(details_url)
+      details_result = call_google_places_api(details_url)
 
-    #pp details_result
+      #pp details_result
 
-    if details_result['result']['formatted_address'] != nil
-      @address = details_result['result']['formatted_address']
-    end
+      if details_result['result']['formatted_address'] != nil
+        @address = details_result['result']['formatted_address']
+      end
 
-    #THINK ABOUT REMOVING THIS:
-    if details_result['result']['place_id'] != nil
-      @placeid = details_result['result']['place_id']
-    end
+      #THINK ABOUT REMOVING THIS:
+      if details_result['result']['place_id'] != nil
+        @placeid = details_result['result']['place_id']
+      end
 
-    if details_result['result']['formatted_phone_number'] != nil
-      @phone_number = details_result['result']['formatted_phone_number']
-    end
+      if details_result['result']['formatted_phone_number'] != nil
+        @phone_number = details_result['result']['formatted_phone_number']
+      end
 
-    if details_result['result']['name'] != nil
-      @name = details_result['result']['name']
-    end
+      if details_result['result']['name'] != nil
+        @name = details_result['result']['name']
+      end
 
-    if  details_result['result']['rating'] != nil
-      @rating = details_result['result']['rating']
-    end
+      if  details_result['result']['rating'] != nil
+        @rating = details_result['result']['rating']
+      end
 
-    if  details_result['result'].include? "price_level" #&& details_result['result']['price_level'] != nil
-      @price_level = details_result['result']['price_level']
-      @price_level = "$" * @price_level
-    end
+      if  details_result['result'].include? "price_level" #&& details_result['result']['price_level'] != nil
+        @price_level = details_result['result']['price_level']
+        @price_level = "$" * @price_level
+      end
 
-    if details_result['result'].include? "opening_hours" #&& details_result['result']['opening_hours']['open_now'] != nil
+      if details_result['result'].include? "opening_hours" #&& details_result['result']['opening_hours']['open_now'] != nil
 
-
-      if details_result['result']['opening_hours']['open_now'] == true
+        if details_result['result']['opening_hours']['open_now'] == true
           @open_now = "Open now"
         else
           @open_now = "Closed"
         end
 
-      if details_result['result']['opening_hours']['periods'][Time.now.wday] != nil
-        @periods = details_result['result']['opening_hours']['periods'][Time.now.wday]
-        @periods = Time.parse(@periods['open']['time'].insert(2,":")).strftime("%I:%M%p")+ " - " + Time.parse(@periods['close']['time'].insert(2,":")).strftime("%I:%M%p")
-      end
-      @weekday_text =  details_result['result']['opening_hours']['weekday_text']
-      #example: https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJIZtG1mlaQIgR6gd0v9uNliE&key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4
+        if details_result['result']['opening_hours']['periods'][Time.now.wday] != nil
+          @periods = details_result['result']['opening_hours']['periods'][Time.now.wday]
+          @periods = Time.parse(@periods['open']['time'].insert(2,":")).strftime("%I:%M%p")+ " - " + Time.parse(@periods['close']['time'].insert(2,":")).strftime("%I:%M%p")
+        end
+        @weekday_text =  details_result['result']['opening_hours']['weekday_text']
+        #example: https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJIZtG1mlaQIgR6gd0v9uNliE&key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4
       end
     end
+  end
 
+  def has_error
+    return @has_error
+  end
 end
 
 get '/places/:error' do
@@ -119,19 +126,23 @@ get '/places' do
   # "Coords: " + lat + lon
   # @place.to_json
 
-
-
   puts "======================"
 
 
   puts
 
   h = {}
-  @place.instance_variables.each { |var| h[var.to_s.delete("@").to_sym] = @place.instance_variable_get(var)}
-  #puts @place.instance_variables
-  #print h
-  puts
-  puts @place.open_now
+  if @place.has_error
+    h['error'] = true;
+  else
+
+    @place.instance_variables.each { |var| h[var.to_s.delete("@").to_sym] = @place.instance_variable_get(var)}
+    #puts @place.instance_variables
+    #print h
+    puts
+    puts @place.open_now
+
+  end
   puts "======================"
   content_type :json
 
@@ -139,7 +150,6 @@ get '/places' do
   #Hash[*@place.instance_variables.map{ |var| [var.to_s.delete("@").to_sym, @place.instance_variable_get(var)]}.flatten].to_json
   h.to_json
 end
-
 
 post '/places' do
 
@@ -157,8 +167,6 @@ post '/places' do
 
   puts "radius:" + radius.to_s
   puts "query: " + query
-
-
 
   puts "before IF in post places"
 

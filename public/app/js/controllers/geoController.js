@@ -58,11 +58,22 @@ app.controller('GeoController', ['$scope', 'geoService', 'GeoPostService', '$sce
             GeoPostService.getPlaces(position).success(function (data) {
                 //console.log(data);
                 place.setData(data);
-                $scope.hasLocation = true;
-                $scope.place_data = place.getData();
-                //$rootScope.x = place.getData();
-                //$location.path("/restaurant");
-                $scope.map = $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/search?key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4&q=+" + $scope.place_data.address.replace(/\s/g, '+'));
+                var resultData = place.getData();
+                console.log(resultData);
+                if (resultData.hasOwnProperty('error')) {
+                    $scope.hasError = true;
+                    $scope.errorMessage = resultData.error;
+                }
+                else {
+
+                    $scope.hasLocation = true;
+                    //$scope.place_data = place.getData();
+                    $scope.place_data = resultData;
+                    //$rootScope.x = place.getData();
+                    //$location.path("/restaurant");
+                    if ($scope.place_data.address !== undefined)
+                        $scope.map = $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/search?key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4&q=+" + $scope.place_data.address.replace(/\s/g, '+'));
+                }
             });
             GeoPostService.getPlaces(position).error(function (data) {
                 console.log("Error in nogeoctrl: " + data);

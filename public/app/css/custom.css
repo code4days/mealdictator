@@ -78,3 +78,12 @@ div.manualLoc {
     width: 100%;
  }
 }
+.weather {
+    background: rgba(51, 186, 255,.5);
+}
+.open {
+    color: green;
+}
+.closed {
+    color: red;
+}

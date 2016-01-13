@@ -1,136 +1,96 @@
-<div layout="row" layout-sm="column" layout-padding layout-align="center">
-    <div id="place" flex="55" flex-sm="100" ng-show="hasLocation">
-    <md-content class="greenyellow">
-        <ul>
-            <li>You're going to eat at: <b>{{ place_data.name }}</b></li>
-            <li>Rating: {{ place_data.rating }} / 5</li>
-            <li>Phone number: {{ place_data.phone_number }}</li>
-            <li>Address: {{ place_data.address }}</li>
-            <li>Price Level: {{place_data.price_level}}</li>
-            <li>{{place_data.open_now}}</li>
-        </ul>
-        <div ng-repeat="weekday in place_data.weekday_text">
-            {{weekday}}
+<div>
+    <div layout="row" layout-xs="column" layout-margin>
+        <div flex id="place">
+            <md-content class="md-padding">
+                <md-card>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <div style="text-align: center">You're going to eat at <br /><span class = "md-headline">{{ place_data.name }}</span></div>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <div class="md-body-1">Rating:</div><div class="md-body-2"> {{ place_data.rating }} / 5</div>
+                        <div class="md-body-1">Price Level:</div> <div class="md-body-2">{{place_data.price_level}}</div>
+                        <div class="md-body-1">Phone number: </div> {{ place_data.phone_number }}</p>
+                        <div class="md-body-1">Address:</div> <div class="md-body-2">{{ place_data.address }}</div>
+                        <div><br /></div>
+                        <div ng-class="{true: 'open', false: 'closed'}[place_data.open_now.includes('Open')]">{{place_data.open_now}}</div>
+                        <!--<p ng-repeat="weekday in place_data.weekday_text">-->
+                        <!--{{weekday}}-->
+                        <!--</p>-->
+                    </md-card-content>
+                    <div>
+                        <!--<button type="button" id="skipRestaurant">Skip This Restaurant</button>-->
+                        <md-button class="md-raised md-primary" aria-label="Skip">Skip this restaurant</md-button>
+                    </div>
+                </md-card>
         </div>
-
-            <!--need to check for certain values in controller and build object that can be looped through here-->
-            <!--todo:add color for closed times-->
-
-        <div>
-            <!--<button type="button" id="skipRestaurant">Skip This Restaurant</button>-->
-            <md-button aria-label="Skip">Skip this restaurant</md-button>
-        </div>
-    </md-content>
-    </div>
-    <div flex="5"></div>
-    <div id="weather" flex="25" flex-sm="55" layout-align="start" ng-show="hasLocation">
+        <div flex class="weather">
             <md-toolbar class="md-accent">
-               <div layout="row" layout-align="space-around center">
-                   <div>
-                       <md-icon class="material-icons">cloud</md-icon>
-                   </div>
-                   <div>
-                       <b>Current Weather Conditions</b>
-                   </div>
-               </div>
+                <div layout="row" layout-padding layout-align="start center">
+                    <div>
+                        <md-icon class="material-icons">cloud</md-icon>
+                    </div>
+                    <div class="md-title">
+                        Current Weather Conditions
+                    </div>
+                </div>
+            </md-toolbar>
+            <p>
+                Coming back soon...
+            </p>
+        </div>
+    </div>
+    <div layout="row" layout-xs="column" layout-padding>
+        <!--</div>-->
+        <div id="map" flex>
+            <md-content>
+                <iframe class="map"
+                        frameborder="0" style="border:0" ng-src="{{map}}"></iframe>
+            </md-content>
+        </div>
+        <div flex id="settings" class="md-whiteframe-z2">
+            <md-toolbar class="md-accent">
+                <div layout="row" layout-padding layout-align="start center">
+                    <div>
+                        <md-icon class="material-icons">my_location</md-icon>
+                    </div>
+                    <div class="md-title">
+                        Redefine your loaction
+                    </div>
+                </div>
             </md-toolbar>
             <md-content>
-                <ul>
-                    <li></li>
-                    <li></li>
-                </ul>
+                <form name="customSettings">
+                    <md-input-container>
+                        <md-icon class="material-icons">location_on</md-icon>
+                        <input type="text" placeholder="Search City, State, or Zip" ng-model="locationInput"><br>
+                    </md-input-container>
+                    <!-- todo:add autocomplete -->
+                    <!--<label for="radius">Change search radius</label>-->
+                    <!--<input type="range" name="radius" id="mile" value="1" min="1" max="100">-->
+                    <md-input-container>
+                        <input type="text" value="1" min="1" max="100" ng-model="radius" placeholder="Radius">
+                    </md-input-container>
+                    <!--<input type="hidden" name="lat" ng-model="newSettings.lat">-->
+                    <!--<input type="hidden" name="lon" ng-model="newSettings.lon">-->
+                    <br>
+                    <md-button class="md-raised md-primary" ng-click="customLocation()">Dictate</md-button>
+                </form>
+                <!--</div>-->
             </md-content>
-    </div>
-</div>
-<div layout="row" layout-sm="column" layout-margin layout-padding>
-    <!--</div>-->
-    <div id="map" flex="45" ng-show="hasLocation">
-        <md-content>
-            <iframe class="map" width="600"
-                    height="450"
-                    frameborder="0" style="border:0" ng-src="{{map}}"></iframe>
-        </md-content>
-    </div>
-    <div id="settings" flex="45" class="md-whiteframe-z2">
-    <md-toolbar class="md-accent">
-        <div layout="row" layout-align="space-around center">
-            <div>
-                <md-icon class="material-icons">my_location</md-icon>
-            </div>
-            <div>
-                <h4>Redefine your loaction</h4>
-            </div>
         </div>
-    </md-toolbar>
-    <md-content>
-        <form name="customSettings">
-            <md-input-container>
-                <md-icon class="material-icons">location_on</md-icon>
-                <input type="text" placeholder="Search City, State, or Zip" ng-model="locationInput"><br>
-            </md-input-container>
-            <!-- todo:add autocomplete -->
-
-            <!--<label for="radius">Change search radius</label>-->
-            <!--<input type="range" name="radius" id="mile" value="1" min="1" max="100">-->
-            <md-input-container>
-                <input type="text" value="1" min="1" max="100" ng-model="radius" placeholder="Radius">
-            </md-input-container>
-
-
-            <!--<input type="hidden" name="lat" ng-model="newSettings.lat">-->
-            <!--<input type="hidden" name="lon" ng-model="newSettings.lon">-->
-
-            <br>
-            <md-button class="md-raised md-primary" ng-click="customLocation()">Dictate</md-button>
-        </form>
-    <!--</div>-->
-    </md-content>
-</div>
-<div>
-    <div id="location" class="container">
-        <p></p>
     </div>
-    <div id="social" class="container">
+    <div layout="row" layout-sm="column">
+        <div id="location" class="container">
+            <p>something</p>
+        </div>
+        <div id="social" class="container">
 
-    </div>
-
-
-
-
-    <!--<div><p>attempting to find location...</p></div>
-    <div ng-show="hasLocation">
-        {{ place_data }}
-    </div>
-    -->
-
-
-
-    <!--<p ng-bind="position|json"></p>-->
-    <!--<p>-->
-        <!--{{place}}<br /><br />-->
-        <!--Longitude: {{position.coords.longitude}} <br />-->
-        <!--Latitude: {{position.coords.latitude}} <br />-->
-        <!--You're going to eat at: {{place.name}} <br />-->
-        <!--Rating: {{place.rating}} <br />-->
-        <!--Phone number: {{place.phone_number}} <br />-->
-        <!--Address: {{place.address}}<br />-->
-        <!--Price Level: {{place.price_level}}<br />-->
-        <!--{{place.open_now}}<br /><br />-->
-        <!--&lt;!&ndash;{{place.weekday_text}}&ndash;&gt;-->
-
-        <!--<div ng-repeat="weekday in place.weekday_text">-->
-            <!--{{weekday}}-->
-        <!--</div>-->
-<!--&lt;!&ndash;todo: add angular to lines to show when available only, how to loop through all weekdays&ndash;&gt;-->
-
-
-
-    <!--</p>-->
-
-    <!--<div class="Flexible-container">-->
+        </div>
+        <!--<div class="Flexible-container">-->
         <!--<iframe class="map" frameborder="0" style="border:0" ng-src="{{map}}"></iframe>-->
-    <!--</div>-->
-
+        <!--</div>-->
+    </div>
 </div>
 
-</div>

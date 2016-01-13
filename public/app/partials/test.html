@@ -1,6 +1,94 @@
-<p>STUFF</p>
 <div>
+    <div layout="row" layout-xs="column" layout-margin>
+        <div flex id="place">
+            <md-content class="md-padding">
+                <md-card>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <div style="text-align: center">You're going to eat at <br /><span class = "md-headline">{{ place_data.name }}</span></div>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <div class="md-body-1">Rating:</div><div class="md-body-2"> {{ place_data.rating }} / 5</div>
+                        <div class="md-body-1">Price Level:</div> <div class="md-body-2">{{place_data.price_level}}</div>
+                        <div class="md-body-1">Phone number: </div> {{ place_data.phone_number }}</p>
+                        <div class="md-body-1">Address:</div> <div class="md-body-2">{{ place_data.address }}</div>
+                        <div ng-class="{true: 'open', false: 'closed'}[place_data.open_now.includes('Open')]">{{place_data.open_now}}</div>
+                        <!--<p ng-repeat="weekday in place_data.weekday_text">-->
+                            <!--{{weekday}}-->
+                        <!--</p>-->
+                    </md-card-content>
+                    <div>
+                        <!--<button type="button" id="skipRestaurant">Skip This Restaurant</button>-->
+                        <md-button class="md-raised md-primary" aria-label="Skip">Skip this restaurant</md-button>
+                    </div>
+                </md-card>
+        </div>
+        <div flex class="weather">
+            <md-toolbar class="md-accent">
+                <div layout="row" layout-padding layout-align="start center">
+                    <div>
+                        <md-icon class="material-icons">cloud</md-icon>
+                    </div>
+                    <div class="md-title">
+                        Current Weather Conditions
+                    </div>
+                </div>
+            </md-toolbar>
+            <p>
+                Coming back soon...
+            </p>
+        </div>
+    </div>
+    <div layout="row" layout-xs="column" layout-padding>
+        <!--</div>-->
+        <div id="map" flex>
+            <md-content>
+                <iframe class="map"
+                        frameborder="0" style="border:0" ng-src="{{map}}"></iframe>
+            </md-content>
+        </div>
+        <div flex id="settings" class="md-whiteframe-z2">
+            <md-toolbar class="md-accent">
+                <div layout="row" layout-padding layout-align="start center">
+                    <div>
+                        <md-icon class="material-icons">my_location</md-icon>
+                    </div>
+                    <div class="md-title">
+                        Redefine your loaction
+                    </div>
+                </div>
+            </md-toolbar>
+            <md-content>
+                <form name="customSettings">
+                    <md-input-container>
+                        <md-icon class="material-icons">location_on</md-icon>
+                        <input type="text" placeholder="Search City, State, or Zip" ng-model="locationInput"><br>
+                    </md-input-container>
+                    <!-- todo:add autocomplete -->
+                    <!--<label for="radius">Change search radius</label>-->
+                    <!--<input type="range" name="radius" id="mile" value="1" min="1" max="100">-->
+                    <md-input-container>
+                        <input type="text" value="1" min="1" max="100" ng-model="radius" placeholder="Radius">
+                    </md-input-container>
+                    <!--<input type="hidden" name="lat" ng-model="newSettings.lat">-->
+                    <!--<input type="hidden" name="lon" ng-model="newSettings.lon">-->
+                    <br>
+                    <md-button class="md-raised md-primary" ng-click="customLocation()">Dictate</md-button>
+                </form>
+                <!--</div>-->
+            </md-content>
+        </div>
+    </div>
+    <div layout="row" layout-sm="column">
+        <div id="location" class="container">
+            <p>something</p>
+        </div>
+        <div id="social" class="container">
 
-<p>{{test_place}}</p>
-    {{test_place.name}}
+        </div>
+        <!--<div class="Flexible-container">-->
+        <!--<iframe class="map" frameborder="0" style="border:0" ng-src="{{map}}"></iframe>-->
+        <!--</div>-->
+    </div>
 </div>

@@ -16,6 +16,10 @@ app.config(function($routeProvider, $mdThemingProvider) {
             controller: 'RestaurantController',
             templateUrl: 'partials/restaurant.html'
         })
+        .when('/test', {
+            controller:'',
+            templateUrl: 'partials/test.html'
+        })
         .otherwise({
             redirectTo: '/'
         });
