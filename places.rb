@@ -29,7 +29,7 @@ class Places
 
     #do a places search to get the name of restaurants and their place_id within a given radius
     #search_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ @lat + "," + @lon + "&radius=1000&types=food&key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4"
-    search_url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants&location=" + @lat.to_s + "," + @lon.to_s + "&radius=" + @radius.to_s + "&types=restaurant&key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4"
+    search_url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants&location=" + @lat.to_s + "," + @lon.to_s + "&radius=" + @radius.to_s + "&types=restaurant&key=" + ENV["GOOGLE_PLACES"]
     #search_url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants&location=" + @lat.to_s + "," + @lon.to_s + "&radius=" + @radius.to_s + "&types=restaurant&key=AIzaSyBWIRHm8UOx8VLKT5x13thHOO-2O0HtJKs"
 
 
