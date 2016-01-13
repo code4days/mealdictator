@@ -50,7 +50,7 @@ class Places
 
       puts "IN NEW ELSE"
       #do a details search to retrieve details about the selected location
-      details_url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + place_id + "&key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4"
+      details_url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + place_id + "&key=" + ENV["GOOGLE_PLACES"]
       #details_url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + place_id + "AIzaSyBWIRHm8UOx8VLKT5x13thHOO-2O0HtJKs"
 
       details_result = call_google_places_api(details_url)

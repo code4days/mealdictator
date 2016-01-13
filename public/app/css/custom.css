@@ -87,3 +87,7 @@ div.manualLoc {
 .closed {
     color: red;
 }
+.map {
+    width: 600px;
+    height: 450px;
+}
