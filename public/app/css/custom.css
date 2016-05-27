@@ -91,3 +91,6 @@ div.manualLoc {
     width: 600px;
     height: 450px;
 }
+body {
+    background: rgba(204,204,204,0.4);
+}
