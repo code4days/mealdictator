@@ -24,7 +24,8 @@ app.controller('GeoController', ['$scope', 'geoService', 'GeoPostService', '$sce
                     //$rootScope.x = place.getData();
                     //$location.path("/restaurant");
                     //$scope.place = data;
-                    $scope.map = $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/search?key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4&q=+" + $scope.place_data.address.replace(/\s/g, '+'));
+                    //$scope.map = $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/search?key=AIzaSyB3xKb4v0cK805_F1ApSX0Os0KS-XzDoO4&q=+" + $scope.place_data.address.replace(/\s/g, '+'));
+                    $scope.map = $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/search?key=AIzaSyD75sacMh-f6qZeovlxDHMzXM_A8ROiZuM&q=+" + $scope.place_data.address.replace(/\s/g, '+'));
                 });
                 geoService.getPlaces(position).error(function (data) {
                     console.log("error reading places");
