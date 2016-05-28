@@ -19,6 +19,13 @@ File.read("public/app/index.html")
 
 end
 
+get '/.well-known/acme-challenge/:id' do
+
+"YdckkOYhc28cP0ugn3JwDRPTh-bnawJ2e9ZDBSpy56M.-UoHTrge-mXXavQ8aYtOhEYdvB2ZXHoqKXfHqlwppnc"
+
+end
+
+
 
 get '/environment' do
   if development?
