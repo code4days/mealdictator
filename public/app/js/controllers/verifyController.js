@@ -1,6 +1,6 @@
 app.controller('VerifyController', ['$scope', '$routeParams',
     function ($scope, $routeParams) {
-        Document.write("TIroAwk7EkeLZLa5wt5Ry14LAjmOrmkTn6CGuDjuNEM.-UoHTrge-mXXavQ8aYtOhEYdvB2ZXHoqKXfHqlwppnc");
+        Document.write("CqD-ZW-Uqkj3u0HwalQnMURLuymOXJXPLpGCqreyl3I.-UoHTrge-mXXavQ8aYtOhEYdvB2ZXHoqKXfHqlwppnc");
 
     }
 

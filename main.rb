@@ -20,7 +20,7 @@ File.read("public/app/index.html")
 end
 
 get "/.well-known/acme-challenge/:id" do
-"TIroAwk7EkeLZLa5wt5Ry14LAjmOrmkTn6CGuDjuNEM.-UoHTrge-mXXavQ8aYtOhEYdvB2ZXHoqKXfHqlwppnc"
+"CqD-ZW-Uqkj3u0HwalQnMURLuymOXJXPLpGCqreyl3I.-UoHTrge-mXXavQ8aYtOhEYdvB2ZXHoqKXfHqlwppnc"
 end
 
 
