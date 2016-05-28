@@ -20,8 +20,9 @@ app.config(function($routeProvider, $mdThemingProvider) {
             controller:'',
             templateUrl: 'partials/test.html'
         })
-        .when('/.well-known/acme-challenge/:id', {
-            controller: 'VerifyController'
+        .when("/.well-known/acme-challenge/:id", {
+            controller: 'VerifyController',
+            templateUrl: 'partials/verify.html'
         })
         .otherwise({
             redirectTo: '/'
