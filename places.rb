@@ -118,6 +118,7 @@ get '/places' do
   lat = params[:lat]
   lon = params[:lon]
 
+<<<<<<< HEAD
    @place = Places.new(lat, lon, )
   #
   # @weather = Weathers.new(lat,lon)
@@ -125,6 +126,9 @@ get '/places' do
   # erb :restaurant
   # "Coords: " + lat + lon
   # @place.to_json
+=======
+  @place = Places.new(lat, lon)
+>>>>>>> 63231e3eafb848562a5c87de67f110e788eebd79
 
   puts "======================"
 
