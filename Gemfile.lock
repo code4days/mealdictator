@@ -1,23 +1,26 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    httparty (0.13.1)
+    httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
-    json (1.8.1)
+    json (1.8.3)
     multi_xml (0.5.5)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
-    sinatra (1.4.6)
-      rack (~> 1.4)
+    sinatra (1.4.7)
+      rack (~> 1.5)
       rack-protection (~> 1.4)
       tilt (>= 1.3, < 3)
-    tilt (2.0.1)
+    tilt (2.0.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  httparty
-  sinatra
+  httparty (~> 0.13.7)
+  sinatra (~> 1.4, >= 1.4.7)
+
+BUNDLED WITH
+   1.10.6

@@ -1,7 +1,3 @@
 source "https://rubygems.org"
-gem 'sinatra'
-gem 'httparty'
-# gem 'data_mapper'
-# gem 'datamapper'
-# gem 'dm-mysql-adapter'
-#gem 'do_mysql'
+gem 'sinatra', '~> 1.4', '>= 1.4.7'
+gem 'httparty', '~> 0.13.7'
