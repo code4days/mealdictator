@@ -1,5 +1,5 @@
-whatsforlunch
-==============
+MealDictator
+============
 
  * Practice API calls in ruby
  * Practice Sinatra
